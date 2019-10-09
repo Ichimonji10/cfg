@@ -1,0 +1,6 @@
+[Unit]
+Description=Start a long SMART scan
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/smart-test-long

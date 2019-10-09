@@ -1,0 +1,6 @@
+[Unit]
+Description=Update dynamic DNS
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dynamic-dns.sh
