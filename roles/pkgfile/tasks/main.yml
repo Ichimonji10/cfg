@@ -1,15 +1,24 @@
 ---
+- name: Check whether pkgfile is installed
+  command: pacman -Qi pkgfile
+  changed_when: false
+  failed_when: false
+  register: result
+
 - block:
 
-  - name: Install pkgfile
-    pacman:
-      name: pkgfile
-
-  - name: Start and enable timer to update pkgfile database
+  # Clean-up from a prior version of this role.
+  - name: Stop and disable pkgfile-update.timer
     systemd:
       name: pkgfile-update.timer
-      state: started
-      enabled: true
+      state: stopped
+      enabled: false
       daemon_reload: true
+    when: result.rc == 0
+
+  - name: Uninstall pkgfile
+    pacman:
+      name: pkgfile
+      state: absent
 
   become: true
