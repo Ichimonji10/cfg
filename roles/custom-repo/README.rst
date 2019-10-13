@@ -308,9 +308,9 @@ used to package gog-pyre:
         -o custom-repo-user \
         -g custom-repo-user \
         gog-pyre-1.50427.11957.23366-1-x86_64.pkg.tar.xz \
-        /srv/packages.jerebear.name/arch-linux/ichi-private/
-    cd /srv/packages.jerebear.name/arch-linux/ichi-private/
-    sudo -u custom-repo-user repo-add ichi-private.db.tar.xz \
+        /srv/packages.jerebear.name/arch-linux/ichi-public/
+    cd /srv/packages.jerebear.name/arch-linux/ichi-public/
+    sudo -u custom-repo-user repo-add ichi-public.db.tar.xz \
         gog-pyre-1.50427.11957.23366-1-x86_64.pkg.tar.xz
 
 .. _gog api documentation: https://gogapidocs.readthedocs.io/en/latest/index.html

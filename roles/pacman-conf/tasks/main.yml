@@ -19,20 +19,13 @@
       - '"routers" not in group_names'
       - '"webservers" not in group_names'
 
-  - name: Install /etc/pacman.d/ichi-private.netrc
-    template:
-      src: ichi-private.netrc
-      dest: /etc/pacman.d/
-    when:
-      - '"workstations" in group_names'
-      - '"ichi-private" in pacman_conf_repo_passwords'
-
-  - name: Install /etc/pacman.d/ichi-private.conf
-    copy:
-      src: etc_pacman.d/ichi-private.conf
-      dest: /etc/pacman.d/
-    notify: Sync ichi-private repository
-    when: '"workstations" in group_names'
+  - name: Delete ichi-private configuration files
+    file:
+      path: '{{ item }}'
+      state: absent
+    loop:
+      - /etc/pacman.d/ichi-private.netrc
+      - /etc/pacman.d/ichi-private.conf
 
   - name: Install /etc/pacman.conf
     template:

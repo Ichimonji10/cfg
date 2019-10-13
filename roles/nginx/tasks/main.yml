@@ -33,35 +33,6 @@
       mode: 0640
     when: transmission_password is defined
 
-  - name: Delete htpasswd file for transmission.ichimonji10.name
-    file:
-      path: >-
-        /etc/nginx/{{
-          'transmission.ichimonji10.name' | systemd_escape
-        }}.htpasswd
-      state: absent
-
-  - name: Delete htpasswd file for packages.ichimonji10.name/.../ichi-private/
-    file:
-      path: >-
-        /etc/nginx/{{
-          'packages.ichimonji10.name/arch-linux/ichi-private' | systemd_escape
-        }}.htpasswd
-      state: absent
-
-  - name: Install htpasswd file for packages.jerebear.name/.../ichi-private/
-    htpasswd:
-      name: anonymous
-      password: '{{ pacman_conf_repo_passwords["ichi-private"] }}'
-      path: >-
-        /etc/nginx/{{
-          'packages.jerebear.name/arch-linux/ichi-private' | systemd_escape
-        }}.htpasswd
-      owner: root
-      group: http
-      mode: 0640
-    when: '"ichi-private" in pacman_conf_repo_passwords'
-
   - name: Install nginx configuration file
     template:
       src: nginx.conf
@@ -97,15 +68,25 @@
       - www.backtobasicsreading.com
       - www.jerebear.name
 
-  - name: Delete files for static websites
+  - name: Delete outdated files
     file:
-      path: /usr/share/nginx/transmission.ichimonji10.name
+      path: '{{ item }}'
       state: absent
-
-  - name: Delete outdated files for static websites
-    file:
-      path: /usr/share/nginx/www.ichimonji10.name
-      state: absent
+    loop:
+      - >-
+        /etc/nginx/{{
+          'transmission.ichimonji10.name' | systemd_escape
+        }}.htpasswd
+      - >-
+        /etc/nginx/{{
+          'packages.ichimonji10.name/arch-linux/ichi-private' | systemd_escape
+        }}.htpasswd
+      - >-
+        /etc/nginx/{{
+          'packages.jerebear.name/arch-linux/ichi-private' | systemd_escape
+        }}.htpasswd
+      - /usr/share/nginx/transmission.ichimonji10.name
+      - /usr/share/nginx/www.ichimonji10.name
 
   - name: Start and enable nginx
     systemd:
