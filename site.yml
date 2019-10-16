@@ -15,7 +15,6 @@
     - lm-sensors
     - locale
     - pacman-conf
-    - pkgfile
     - smartd
     - time
     - user-ichimonji10
