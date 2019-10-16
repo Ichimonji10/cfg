@@ -12,10 +12,13 @@
     #
     # The order of the following steps is important.
 
-    - name: Install dnsmasq
+    - name: Install requisite applications
       pacman:
-        name: dnsmasq
+        name: '{{ item }}'
         state: present
+      loop:
+        - dnsmasq
+        - openresolv
 
     - name: Install resolvconf configuration file
       copy:
