@@ -28,6 +28,7 @@
         - noto-fonts-emoji
         - ntfs-3g
         - openssh
+        - picard
         - picocom
         - pulseaudio
         - signal-desktop-bin
