@@ -5,6 +5,7 @@
       - bash
       - bind-tools
       - less
+      - man-db
       - perl-rename
       - sudo
       - tree
