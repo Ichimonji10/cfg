@@ -51,6 +51,7 @@
         - gnome-tweaks
 
         # https://wiki.archlinux.org/index.php/GStreamer
+        - gst-libav
         - gst-plugins-base
         - gst-plugins-good
         - gstreamer
