@@ -11,12 +11,12 @@
     - dns
     - dynamic-dns
     - essential-apps
-    - intel-ucode
     - lm-sensors
     - locale
     - pacman-conf
     - smartd
     - time
+    - ucode
     - user-ichimonji10
 
 - hosts: dev_hosts

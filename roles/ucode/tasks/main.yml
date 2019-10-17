@@ -1,0 +1,16 @@
+---
+- block:
+
+    - name: Install amd-ucode
+      pacman:
+        name: amd-ucode
+        state: present
+      when: "'AuthenticAMD' in ansible_processor"
+
+    - name: Install intel-ucode
+      pacman:
+        name: intel-ucode
+        state: present
+      when: "'GenuineIntel' in ansible_processor"
+
+  become: true
