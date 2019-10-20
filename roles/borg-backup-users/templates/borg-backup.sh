@@ -8,7 +8,7 @@ export BORG_PASSPHRASE='{{ borg_backup_users_passphrases[borg_backup_user.local_
 export BORG_REMOTE_PATH=/usr/local/bin/borg1/borg1
 
 repository='{{ borg_backup_user.remote_host }}:borg-backup-user-{{ borg_backup_user.local_user }}'
-archive="$(date --iso-8601=seconds)-$(hostname --short)"
+archive="$(date --iso-8601=seconds)-$(hostnamectl --static)"
 
 borg create --compression lzma "${repository}::${archive}" \
     {% for path in borg_backup_user.local_paths | default(('~/Documents', '~/Pictures')) %} {{ path }} {% endfor %}

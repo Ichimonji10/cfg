@@ -8,7 +8,7 @@ export BORG_PASSPHRASE='{{ borg_backup_system_passphrase }}'
 # As of this writing, `ssh hostname borg --version` returns 0.29.0.
 export BORG_REMOTE_PATH=/usr/local/bin/borg1/borg1
 
-repository="{{ borg_backup_system_remote_host }}:borg-backup-system-$(hostname --short)"
+repository="{{ borg_backup_system_remote_host }}:borg-backup-system-$(hostnamectl --static)"
 archive="$(date --iso-8601=seconds)"
 
 borg create --compression lzma "${repository}::${archive}" \
