@@ -10,6 +10,8 @@
         - /etc/sysctl.d/50-vm-routing.conf
         - /etc/systemd/system/dnsmasq.service.d
         - /etc/systemd/system/libvirtd-networking.service
+        - /etc/systemd/system/libvirtd.service.d
+        - /etc/systemd/system/virtlogd.service.d
         - /usr/local/bin/libvirtd-networking-start
         - /usr/local/bin/libvirtd-networking-stop
 

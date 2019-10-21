@@ -27,11 +27,6 @@
         dest: /etc/qemu/firmware/
       notify: Restart libvirtd
 
-    - name: Install units for libvirt and related tools
-      copy:
-        src: etc_systemd_system/
-        dest: /etc/systemd/system/
-
     # If libvirtd.service is enabled, systemd can perform socket-based
     # activation (e.g. when virt-manager connects). libvirtd will continue
     # running so long as a client is connected or a domain is running, and will
