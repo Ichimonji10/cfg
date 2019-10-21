@@ -1,6 +1,6 @@
 ---
 - name: Set install reason for packages
-  command: 'pacman -D --asdeps qemu openbsd-netcat'
+  command: 'pacman -D --asdeps dmidecode openbsd-netcat qemu'
   become: true
 
 - name: Restart libvirtd

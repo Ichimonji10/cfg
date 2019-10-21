@@ -4,6 +4,7 @@
     - name: Install libvirt and related tools
       pacman:
         name:
+          - dmidecode  # learn hardware w/o probing; libvirt complains if absent
           - libguestfs
           - libvirt
           - openbsd-netcat  # libvirt management over ssh
