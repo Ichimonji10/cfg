@@ -24,19 +24,19 @@
         src: etc_systemd_system/
         dest: /etc/systemd/system/
 
-    # There's no need to start and enable libvirtd, as it's automagically
-    # started when virt-manager connects. In addition, libvirtd will
-    # automatically stop if no clients are connected and no domains are running
-    # for some time (120 seconds on this host). Consequently, starting it here
-    # means that ansible will produce tasks with a "changed" state even on a
-    # correctly configured host.
+    # If libvirtd.service is enabled, systemd can perform socket-based
+    # activation (e.g. when virt-manager connects). libvirtd will continue
+    # running so long as a client is connected or a domain is running, and will
+    # automatically shut down if neither condition is true for some time (as of
+    # this writing, 120 seconds).
     #
-    # This task disables libvirtd.service because an earlier version of this
-    # role enabled it.
-    - name: Disable libvirtd
+    # Starting it here does no harm, except that it unnecessarilyl consumes
+    # system resources, and it causes ansible to produce tasks with a "changed"
+    # state even after the host is correctly configured.
+    - name: Enable libvirtd
       systemd:
         name: libvirtd
-        enabled: false
+        enabled: true
         daemon_reload: true  # due to /etc/systemd/system/ changes above
 
   become: true
