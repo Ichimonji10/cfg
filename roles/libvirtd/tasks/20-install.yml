@@ -20,6 +20,13 @@
         mode: 0755
       notify: Restart libvirtd
 
+    # See: https://bugs.archlinux.org/task/64175#comment182833
+    - name: Ensure OVMF firmware files are discovered by libvirt
+      copy:
+        src: 10-ovmf-workaround.json
+        dest: /etc/qemu/firmware/
+      notify: Restart libvirtd
+
     - name: Install units for libvirt and related tools
       copy:
         src: etc_systemd_system/
