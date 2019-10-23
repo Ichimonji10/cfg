@@ -33,7 +33,6 @@
         - pulseaudio
         - signal-desktop-bin
         - sshfs
-        - steam
         - texlive-core  # for mnemosyne
         - ttf-dejavu
         - unzip
@@ -58,6 +57,12 @@
         - gstreamer
         - gstreamer-vaapi
     notify: Set install reason for optional dependencies
+
+  - name: Uninstall applications
+    pacman:
+      name:
+        - steam
+      state: absent
 
   become: true
 
