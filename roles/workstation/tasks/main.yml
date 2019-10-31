@@ -11,6 +11,7 @@
   - name: Install applications
     pacman:
       name:
+        - bluejeans
         - brother-hll2395dw
         - brscan4
         - calibre

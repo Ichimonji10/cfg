@@ -32,6 +32,7 @@ custom_repos:
       #   Maybe try pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1 instead.
       #
       # Thus, signal-desktop-bin is packaged instead.
+      - bluejeans
       - brother-hll2395dw
       - brscan4
       - mnemosyne
