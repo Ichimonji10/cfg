@@ -60,19 +60,15 @@
 
   become: true
 
-# `failed_when: false` because unit may not exist
-- name: Stop and disable netctl@wlan.service
-  systemd:
-    name: netctl@wlan.service
-    state: stopped
-    enabled: false
-  become: true
-  failed_when: false
-
 - name: Check if the wlan netctl profile exists
   stat:
     path: /etc/netctl/wlan.service
   register: result
+
+- name: Stop the netctl wlan profile
+  command: netctl stop wlan
+  become: true
+  when: result.stat.exists
 
 - name: Disable the netctl wlan profile
   command: netctl disable wlan
