@@ -24,7 +24,7 @@ tupelo.jerebear.name
 
 # Each of these systems has an APC brand UPS attached.
 [apc_hosts]
-amelanchier.jerebear.name
+aronia.jerebear.name
 beech.jerebear.name
 pine.jerebear.name
 
@@ -37,7 +37,7 @@ tupelo.jerebear.name
 # These systems are headless, have high uptime, and have remote management
 # capabilities.
 [servers]
-aronia.jerebear.name
+amelanchier.jerebear.name
 
 [servers:children]
 bittorrent_hosts
@@ -55,7 +55,7 @@ pine.jerebear.name
 pine.jerebear.name
 
 [routers]
-amelanchier.jerebear.name
+aronia.jerebear.name
 
 [webservers]
 pine.jerebear.name

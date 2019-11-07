@@ -45,11 +45,14 @@ Variables
 
 Several variables apply to routers:
 
+``dnsmasq_dmz_if``
+    The name of the DMZ interface. Required.
+
 ``dnsmasq_lan_if``
     The name of the LAN interface. Required.
 
-``dnsmasq_dmz_if``
-    The name of the DMZ interface. Required.
+``dnsmasq_wap_if``
+    The name of the WAP interface. Required.
 
 .. _1.1.1.1: https://1.1.1.1/dns/
 .. _dnsmasq: http://www.thekelleys.org.uk/dnsmasq/doc.html

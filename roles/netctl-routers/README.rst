@@ -18,11 +18,14 @@ should only reference physical interfaces.
 
 Variables:
 
-``netctl_routers_wan_if``
-    The name of the WAN network interface.
-
 ``netctl_routers_dmz_if``
     The name of the DMZ network interface.
 
 ``netctl_routers_lan_if``
     The name of the LAN network interface.
+
+``netctl_routers_wan_if``
+    The name of the WAN network interface.
+
+``netctl_routers_wap_if``
+    The name of the WAP network interface.

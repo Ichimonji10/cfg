@@ -2,9 +2,10 @@
 - name: Assert that required variables are defined
   assert:
     that:
-      - netctl_routers_wan_if is defined
-      - netctl_routers_lan_if is defined
       - netctl_routers_dmz_if is defined
+      - netctl_routers_lan_if is defined
+      - netctl_routers_wan_if is defined
+      - netctl_routers_wap_if is defined
 
 - block:
 
@@ -21,6 +22,7 @@
         - dmz
         - lan
         - wan
+        - wap
       register: result
 
     # This task may look pointless when the systemd module can also enable and
@@ -40,6 +42,7 @@
         - dmz
         - lan
         - wan
+        - wap
       when: result is changed
       tags: skip_ansible_lint
 
@@ -53,6 +56,7 @@
         - dmz
         - lan
         - wan
+        - wap
 
   become: true
 

@@ -20,3 +20,10 @@
     state: restarted
     daemon_reload: true
   become: true
+
+- name: Restart netctl@wap.service
+  systemd:
+    name: netctl@wap.service
+    state: restarted
+    daemon_reload: true
+  become: true

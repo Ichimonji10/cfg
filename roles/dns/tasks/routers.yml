@@ -2,8 +2,9 @@
 - name: Verify required variables are present
   assert:
     that:
-      - dnsmasq_lan_if is defined
       - dnsmasq_dmz_if is defined
+      - dnsmasq_lan_if is defined
+      - dnsmasq_wap_if is defined
 
 - block:
 

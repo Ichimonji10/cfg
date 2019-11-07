@@ -1,4 +1,16 @@
 ---
-netctl_generic_external_if: enp1s0
+dnsmasq_dmz_if: enp1s0
+dnsmasq_lan_if: enp2s0
+dnsmasq_wap_if: enp4s0
+
+netctl_routers_dmz_if: enp1s0
+netctl_routers_lan_if: enp2s0
+netctl_routers_wan_if: enp3s0
+netctl_routers_wap_if: enp4s0
+
+nftables_routers_dmz_if: enp1s0
+nftables_routers_lan_if: enp2s0
+nftables_routers_wan_if: enp3s0
+nftables_routers_wap_if: enp4s0
 
 # vim:ft=yaml:
