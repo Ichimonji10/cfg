@@ -1,5 +1,5 @@
 ---
-- name: Restart hostapd
+- name: Restart apcupsd
   systemd:
     name: apcupsd.service
     state: restarted

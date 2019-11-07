@@ -18,7 +18,7 @@
       regexp: '^BATTERYLEVEL '
       # Default: 5
       line: 'BATTERYLEVEL 10'
-    notify: Restart hostapd
+    notify: Restart apcupsd
 
   - name: Customize MINUTES directive in apcupsd configuration file
     lineinfile:
@@ -26,7 +26,7 @@
       regexp: '^MINUTES '
       # Default: 3
       line: 'MINUTES 5'
-    notify: Restart hostapd
+    notify: Restart apcupsd
 
   - name: Start and enable apcupsd
     systemd:
