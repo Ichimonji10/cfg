@@ -1,4 +1,0 @@
----
-dynamic_dns_urls: '{{ vault_dynamic_dns_urls }}'
-
-# vim:ft=yaml:
