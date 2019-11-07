@@ -11,6 +11,7 @@
     - dns
     - dynamic-dns
     - essential-apps
+    - ip-forwarding
     - lm-sensors
     - locale
     - pacman-conf
