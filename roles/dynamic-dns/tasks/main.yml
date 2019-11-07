@@ -1,10 +1,11 @@
 ---
+# `dynamic_dns_urls | bool` has insane behaviour. See:
+# https://medium.com/opsops/wft-bool-filter-in-ansible-e7e2fd7a148f
 - include_tasks: install.yml
   when:
     - dynamic_dns_install
-    - dynamic_dns_urls | bool
+    - dynamic_dns_urls | count > 0
 
 - include_tasks: uninstall.yml
   when:
     - not dynamic_dns_install
-    - dynamic_dns_urls | bool
