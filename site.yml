@@ -66,7 +66,6 @@
 
 - hosts: routers
   roles:
-    - hostapd  # NOTE: Execute this play only over a wired connection.
     - netctl-routers
     - nftables-routers
 

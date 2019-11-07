@@ -26,6 +26,3 @@ Variables:
 
 ``netctl_routers_lan_if``
     The name of the LAN network interface.
-
-``netctl_routers_wlan_if``
-    The name of a WLAN network interface.

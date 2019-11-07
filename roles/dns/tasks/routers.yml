@@ -4,7 +4,6 @@
     that:
       - dnsmasq_lan_if is defined
       - dnsmasq_dmz_if is defined
-      - dnsmasq_secure_wlan_if is defined
 
 - block:
 

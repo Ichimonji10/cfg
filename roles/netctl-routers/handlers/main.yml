@@ -20,10 +20,3 @@
     state: restarted
     daemon_reload: true
   become: true
-
-- name: Restart netctl@wlan.service
-  systemd:
-    name: netctl@wlan.service
-    state: restarted
-    daemon_reload: true
-  become: true

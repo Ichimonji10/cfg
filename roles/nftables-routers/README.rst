@@ -13,6 +13,3 @@ Variables:
 
 ``nftables_routers_lan_if``
     The name of the LAN network interface.
-
-``nftables_routers_secure_wlan_if``
-    The name of a secure WLAN network interface.

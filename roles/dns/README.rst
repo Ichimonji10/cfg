@@ -51,9 +51,6 @@ Several variables apply to routers:
 ``dnsmasq_dmz_if``
     The name of the DMZ interface. Required.
 
-``dnsmasq_secure_wlan_if``
-    The name of the secure WLAN interface. Required.
-
 .. _1.1.1.1: https://1.1.1.1/dns/
 .. _dnsmasq: http://www.thekelleys.org.uk/dnsmasq/doc.html
 .. _stubby: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby

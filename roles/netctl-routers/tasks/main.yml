@@ -5,7 +5,6 @@
       - netctl_routers_wan_if is defined
       - netctl_routers_lan_if is defined
       - netctl_routers_dmz_if is defined
-      - netctl_routers_wlan_if is defined
 
 - block:
 
@@ -22,7 +21,6 @@
         - dmz
         - lan
         - wan
-        - wlan
       register: result
 
     # This task may look pointless when the systemd module can also enable and
@@ -42,7 +40,6 @@
         - dmz
         - lan
         - wan
-        - wlan
       when: result is changed
       tags: skip_ansible_lint
 
@@ -56,6 +53,24 @@
         - dmz
         - lan
         - wan
-        - wlan
 
   become: true
+
+# `failed_when: false` because unit may not exist
+- name: Stop and disable netctl@wlan.service
+  systemd:
+    name: netctl@wlan.service
+    state: stopped
+    enabled: false
+  become: true
+  failed_when: false
+
+- name: Check if the wlan netctl profile exists
+  stat:
+    path: /etc/netctl/wlan.service
+  register: result
+
+- name: Disable the netctl wlan profile
+  command: netctl disable wlan
+  become: true
+  when: result.stat.exists
