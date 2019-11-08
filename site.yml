@@ -25,6 +25,10 @@
     - dev-env
     - syncthing
 
+- hosts: coreboot_hosts
+  roles:
+    - coreboot
+
 - hosts: uefi_hosts
   roles:
     - uefi

@@ -16,6 +16,11 @@ tupelo.jerebear.name
 beech.jerebear.name
 pine.jerebear.name
 
+# Each of these systems uses coreboot.
+[coreboot_hosts]
+amelanchier.jerebear.name
+aronia.jerebear.name
+
 # Each of these systems has a UEFI BIOS.
 [uefi_hosts]
 beech.jerebear.name
