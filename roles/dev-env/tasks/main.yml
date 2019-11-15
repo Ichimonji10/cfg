@@ -33,6 +33,7 @@
         - mypy
         - namcap
         - pacman-contrib
+        - python-dnspython  # for ansible's dig lookup plugin
         - python-docutils  # for rst2html
         - python-passlib  # for ansible's htpasswd module
         - python-pylint
