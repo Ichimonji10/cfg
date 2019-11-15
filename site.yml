@@ -20,11 +20,6 @@
     - ucode
     - user-ichimonji10
 
-- hosts: dev_hosts
-  roles:
-    - dev-env
-    - syncthing
-
 - hosts: coreboot_hosts
   roles:
     - coreboot
@@ -36,6 +31,7 @@
 - hosts: workstations
   roles:
     - borg-backup-users
+    - dev-env
     - syncthing
     - workstation
 

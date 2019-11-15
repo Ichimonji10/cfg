@@ -4,12 +4,6 @@
 beech.jerebear.name
 tupelo.jerebear.name
 
-# These systems are used for software development. They might or might not have
-# a GUI.
-[dev_hosts]
-beech.jerebear.name
-tupelo.jerebear.name
-
 # These systems have BTRFS filesystems, and therefore require special periodic
 # checks like filesystem scrubs.
 [btrfs_hosts]

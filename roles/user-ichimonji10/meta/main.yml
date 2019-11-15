@@ -7,7 +7,7 @@
 # The workstation role creates the uucp group when installing picocom.
 dependencies:
   - role: dev-env
-    when: "'dev_hosts' in group_names"
+    when: "'workstations' in group_names"
   - role: essential-apps
   - role: group-wheel
   - role: libvirtd
