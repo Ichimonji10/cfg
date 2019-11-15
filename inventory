@@ -4,6 +4,12 @@
 beech.jerebear.name
 tupelo.jerebear.name
 
+# These systems sync files with syncthing.
+[syncthing_hosts]
+beech.jerebear.name
+pine.jerebear.name
+tupelo.jerebear.name
+
 # These systems have BTRFS filesystems, and therefore require special periodic
 # checks like filesystem scrubs.
 [btrfs_hosts]

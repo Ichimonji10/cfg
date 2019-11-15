@@ -32,8 +32,11 @@
   roles:
     - borg-backup-users
     - dev-env
-    - syncthing
     - workstation
+
+- hosts: syncthing_hosts
+  roles:
+    - syncthing
 
 - hosts: vm_hosts
   roles:
