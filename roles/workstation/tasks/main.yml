@@ -24,6 +24,7 @@
         - mnemosyne
         - ms-sys
         - networkmanager
+        - networkmanager-openvpn
         - noto-fonts
         - noto-fonts-cjk
         - noto-fonts-emoji
