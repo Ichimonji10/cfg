@@ -18,6 +18,7 @@
         - exfat-utils
         - firefox
         - gptfdisk
+        - hexchat
         - iperf3
         - lshw
         - lsof
