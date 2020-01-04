@@ -13,13 +13,6 @@
           - virt-install  # libvirt management via console (incl. virt-clone)
       notify: Set install reason for packages
 
-    - name: Install qemu configuration file
-      copy:
-        src: qemu.conf
-        dest: /etc/libvirt/qemu.conf
-        mode: 0755
-      notify: Restart libvirtd
-
     # See: https://bugs.archlinux.org/task/64175#comment182833
     - name: Ensure OVMF firmware files are discovered by libvirt
       copy:
