@@ -40,6 +40,7 @@
 
 - hosts: vm_hosts
   roles:
+    - dockerd
     - libvirtd
 
 - hosts: btrfs_hosts

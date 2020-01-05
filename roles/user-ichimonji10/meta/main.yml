@@ -10,6 +10,8 @@ dependencies:
     when: "'workstations' in group_names"
   - role: essential-apps
   - role: group-wheel
+  - role: dockerd
+    when: "'vm_hosts' in group_names"
   - role: libvirtd
     when: "'vm_hosts' in group_names"
   - role: group-media

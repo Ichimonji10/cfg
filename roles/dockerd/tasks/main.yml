@@ -1,0 +1,19 @@
+---
+- block:
+
+    - name: Install docker
+      pacman:
+        name: docker
+
+    - name: Install an override file for docker.service
+      copy:
+        src: override.conf
+        dest: /etc/systemd/system/docker.service.d/override.conf
+
+    - name: Start and enable dockerd
+      systemd:
+        name: docker.service
+        enabled: true
+        daemon_reload: true  # in case systemd hasn't seen override.conf
+
+  become: true
