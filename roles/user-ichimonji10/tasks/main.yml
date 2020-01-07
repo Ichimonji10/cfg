@@ -12,8 +12,10 @@
 # by default." See: https://wiki.archlinux.org/index.php/Libvirt#Using_polkit
 - name: Append "libvirt" to the list of groups
   set_fact:
-    user_ichimonji10_groups: >
-      '{{ user_ichimonji10_groups + ["docker", "libvirt"] }}'
+    user_ichimonji10_groups: '{{ user_ichimonji10_groups + [item] }}'
+  loop:
+    - docker
+    - libvirt
   when: "'vm_hosts' in group_names"
 
 - name: Append "uucp" and "wireshark" to the list of groups
