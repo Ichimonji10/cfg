@@ -8,7 +8,7 @@
     - name: Install an override file for docker.service
       copy:
         src: override.conf
-        dest: /etc/systemd/system/docker.service.d/override.conf
+        dest: /etc/systemd/system/docker.service.d/
 
     - name: Start and enable dockerd
       systemd:
