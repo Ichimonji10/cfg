@@ -1,19 +1,24 @@
 ---
 - block:
 
+    - name: Delete override file for docker.service
+      file:
+        path: /etc/systemd/system/docker.service.d/
+        state: absent
+
     - name: Install docker
       pacman:
         name: docker
 
-    - name: Install an override file for docker.service
+    - name: Install docker configuration file
       copy:
-        src: override.conf
-        dest: /etc/systemd/system/docker.service.d/
+        src: daemon.json
+        dest: /etc/docker/daemon.json
+      notify: Restart docker
 
     - name: Start and enable dockerd
       systemd:
         name: docker.service
         enabled: true
-        daemon_reload: true  # in case systemd hasn't seen override.conf
 
   become: true
