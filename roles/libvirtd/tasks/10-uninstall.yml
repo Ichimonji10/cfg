@@ -6,6 +6,7 @@
         path: '{{ item }}'
         state: absent
       loop:
+        - /etc/qemu/firmware/10-ovmf-workaround.json
         - /etc/sysctl.d/50-libvirtd-networking.conf
         - /etc/sysctl.d/50-vm-routing.conf
         - /etc/systemd/system/dnsmasq.service.d
