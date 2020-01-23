@@ -34,7 +34,7 @@
         - picard
         - picocom
         - pulseaudio
-        - signal-desktop-bin
+        - signal-desktop
         - sshfs
         - texlive-core  # for mnemosyne
         - ttf-dejavu
@@ -64,6 +64,7 @@
   - name: Uninstall applications
     pacman:
       name:
+        - signal-desktop-bin
         - steam
       state: absent
 
