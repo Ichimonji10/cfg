@@ -36,6 +36,7 @@
         - python-dnspython  # for ansible's dig lookup plugin
         - python-docutils  # for rst2html
         - python-passlib  # for ansible's htpasswd module
+        - python-poetry
         - python-pylint
         - python-wheel
         - rust
