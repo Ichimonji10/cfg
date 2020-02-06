@@ -43,6 +43,7 @@
         - rust-docs
         - shellcheck
         - sshpass  # optional for ansible
+        - tmate
         - tmux
         - twine
         - vim
