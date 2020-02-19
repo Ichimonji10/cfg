@@ -50,11 +50,9 @@ def find_prune_snapshots(path, days, weeks):
         age = now - created
         if age <= datetime.timedelta(days=int(days)):
             continue
-        elif (age <= datetime.timedelta(weeks=int(weeks)) and
-              created.isoweekday() == 3):
+        if age <= datetime.timedelta(weeks=int(weeks)) and created.isoweekday() == 3:
             continue  # 1–7 == mon–sun
-        else:
-            subprocess.run(['btrfs', 'subvolume', 'delete', str(snapshot)])
+        subprocess.run(('btrfs', 'subvolume', 'delete', str(snapshot)), check=True)
 
 
 def _get_datetime(timestamp):
@@ -105,4 +103,4 @@ def _get_epilog():
 
 
 if __name__ == '__main__':
-    exit(main())
+    main()

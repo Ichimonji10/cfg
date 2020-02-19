@@ -92,6 +92,7 @@ def _get_tun0_ipv4():
     while True:
         proc = subprocess.run(
             ('ip', '-brief', '-family', 'inet', 'addr', 'show', 'dev', 'tun0'),
+            check=False,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
@@ -109,4 +110,4 @@ def _get_tun0_ipv4():
 
 
 if __name__ == '__main__':
-    exit(main())
+    main()

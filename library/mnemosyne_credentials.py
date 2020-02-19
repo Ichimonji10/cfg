@@ -131,4 +131,4 @@ def set_attr(db_path, attr, value):
 
 
 if __name__ == '__main__':
-    exit(main())
+    main()
