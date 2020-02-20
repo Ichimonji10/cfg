@@ -97,3 +97,16 @@
     enabled: true
     daemon_reload: true
   become: true
+
+- name: Delete incorrectly named certificate
+  file:
+    path: /etc/pki/tls/certs/RH-IT-Root-CA.pem
+    state: absent
+  become: true
+
+- name: Install Red Hat root CA
+  copy:
+    content: '{{ workstation_rh_it_root_ca_crt }}'
+    dest: /etc/pki/tls/certs/RH-IT-Root-CA.crt
+    mode: 0644
+  become: true
