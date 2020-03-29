@@ -25,7 +25,7 @@
 
     - name: Install a private SSH key
       copy:
-        src: '{{ borg_backup_users_private_keys[borg_backup_user.local_user] }}'
+        content: '{{ borg_backup_users_private_keys[borg_backup_user.local_user] }}'
         dest: '{{ borg_backup_user_home }}/.ssh/borg-backup'
         mode: 0600
       when: borg_backup_user.local_user in borg_backup_users_private_keys

@@ -1,5 +1,6 @@
 ---
 borg_backup_users_passphrases: '{{ vault_borg_backup_users_passphrases }}'
+borg_backup_users_private_keys: '{{ vault_borg_backup_users_private_keys }}'
 borg_backup_users:
   - local_paths:
       - '~/Books'
