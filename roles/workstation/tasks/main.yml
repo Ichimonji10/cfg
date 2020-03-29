@@ -98,6 +98,12 @@
     daemon_reload: true
   become: true
 
+- name: Create certs directory
+  file:
+    path: /etc/pki/tls/certs/
+    state: directory
+  become: true
+
 - name: Delete incorrectly named certificate
   file:
     path: '{{ item }}'

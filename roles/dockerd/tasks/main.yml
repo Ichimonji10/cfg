@@ -13,7 +13,7 @@
     - name: Install docker configuration file
       copy:
         src: daemon.json
-        dest: /etc/docker/daemon.json
+        dest: /etc/docker/
       notify: Restart docker
 
     - name: Start and enable dockerd
