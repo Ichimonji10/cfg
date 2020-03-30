@@ -109,13 +109,23 @@
     path: '{{ item }}'
     state: absent
   loop:
+    - /etc/pki/tls/certs/RH-IT-Root-CA.crt
     - /etc/pki/tls/certs/RH-IT-Root-CA.pem
-    - /etc/pki/tls/certs/2015-RH-IT-Root-CA.pem
   become: true
+
+# See: https://mojo.redhat.com/docs/DOC-1195909
 
 - name: Install Red Hat root CA
   copy:
     content: '{{ workstation_rh_it_root_ca_crt }}'
-    dest: /etc/pki/tls/certs/RH-IT-Root-CA.crt
+    dest: /etc/pki/tls/certs/2015-RH-IT-Root-CA.pem
     mode: 0644
   become: true
+
+- name: Install OpenVPN connection profile
+  copy:
+    src: RDU2.ovpn
+    dest: /etc/NetworkManager/system-connections/
+    mode: 0600
+  become: true
+  notify: Reload NetworkManager connections
