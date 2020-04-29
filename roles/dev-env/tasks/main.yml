@@ -38,6 +38,7 @@
         - python-passlib  # for ansible's htpasswd module
         - python-poetry
         - python-pylint
+        - python-sphinx
         - python-wheel
         - rust
         - rust-docs
