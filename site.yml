@@ -55,7 +55,7 @@
 
 - hosts: servers:!routers
   roles:
-    - netctl-generic
+    - systemd-networkd-generic
 
 - hosts: apc_hosts
   roles:
