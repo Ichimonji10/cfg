@@ -55,4 +55,5 @@
 - include_tasks: python.yml
 - include_tasks: ssh.yml
 - include_tasks: systemd.yml
+  when: "'workstations' in group_names"
 - include_tasks: vim.yml
