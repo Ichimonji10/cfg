@@ -1,0 +1,21 @@
+---
+- block:
+
+  - name: Install NetworkManager OpenVPN plugin
+    pacman:
+      name: networkmanager-openvpn
+      state: present
+
+  - name: Install RDU2 OpenVPN connection profile
+    copy:
+      src: RDU2.ovpn
+      dest: /etc/NetworkManager/system-connections/
+      mode: 0600
+    notify: Reload NetworkManager connections
+
+  - name: Install dnsmasq (for connection sharing)
+    pacman:
+      name: dnsmasq
+      state: present
+
+  become: true

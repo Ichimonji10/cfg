@@ -1,0 +1,17 @@
+---
+- block:
+
+  - name: Install NetworkManager and related packages
+    pacman:
+      name:
+        - dnsmasq
+        - networkmanager
+      state: present
+
+  - name: Start and enable NetworkManager
+    systemd:
+      name: NetworkManager.service
+      state: started
+      enabled: true
+
+  become: true

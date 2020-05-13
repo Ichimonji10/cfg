@@ -15,9 +15,7 @@
       src: etc_pacman.d/ichi-public.conf
       dest: /etc/pacman.d/
     notify: Sync ichi-public repository
-    when:
-      - '"routers" not in group_names'
-      - '"webservers" not in group_names'
+    when: '"webservers" not in group_names'
 
   - name: Delete ichi-private configuration files
     file:

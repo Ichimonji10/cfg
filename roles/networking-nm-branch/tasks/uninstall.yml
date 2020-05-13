@@ -1,0 +1,11 @@
+---
+- block:
+
+  - name: Uninstall network management tools
+    pacman:
+      name:
+        - dnsmasq
+        - networkmanager
+      state: absent
+
+  become: true

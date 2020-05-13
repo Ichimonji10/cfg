@@ -1,0 +1,6 @@
+---
+- include_tasks: install.yml
+  when: networking_nm_branch_install
+
+- include_tasks: uninstall.yml
+  when: not networking_nm_branch_install

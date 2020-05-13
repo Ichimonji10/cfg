@@ -1,0 +1,6 @@
+# Let iwd manage wireless interfaces.
+[Match]
+Name=wlp* wlan*
+
+[Link]
+Unmanaged=true

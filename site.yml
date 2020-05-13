@@ -1,17 +1,29 @@
 ---
+# network branches & leaves ########################################################################
+
+- hosts: network_branches
+  roles:
+    - networking-nm-branch
+    - nftables-branch
+
+- hosts: network_leaves
+  roles:
+    - networking-nm-leaf
+    - nftables-leaf
+
+# disorganized, should reorganize to match inventory ###############################################
+
 # Make custom packages available to subsequent roles.
 - hosts: webservers
   roles:
-    - custom-repo
+    - custom-repo  # TODO: drop
     - nginx  # Make sure to install SSL certificates.
 
 - hosts: all
   roles:
     - crda
-    - dns
     - dynamic-dns
     - essential-apps
-    - ip-forwarding
     - lm-sensors
     - locale
     - pacman-conf
@@ -53,10 +65,6 @@
   roles:
     - sshd
 
-- hosts: servers:!routers
-  roles:
-    - systemd-networkd-generic
-
 - hosts: apc_hosts
   roles:
     - apcupsd
@@ -68,16 +76,6 @@
 - hosts: mnemosyne_hosts
   roles:
     - mnemosyne
-
-- hosts: routers
-  roles:
-    - netctl-routers
-    - nftables-routers
-
-# Placing the vars below into group_vars/all:!routers/vars had no effect.
-- hosts: all:!routers
-  roles:
-    - nftables-generic
 
 - hosts: webservers
   roles:

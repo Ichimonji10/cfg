@@ -1,6 +1,0 @@
-Description='WAP interface'
-Connection=ethernet
-Interface={{ netctl_routers_wap_if }}
-IP=static
-Address=(192.168.12.1/24)
-SkipNoCarrier=yes

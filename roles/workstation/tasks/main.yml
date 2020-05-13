@@ -24,8 +24,6 @@
         - lsof
         - mnemosyne
         - ms-sys
-        - networkmanager
-        - networkmanager-openvpn
         - noto-fonts
         - noto-fonts-cjk
         - noto-fonts-emoji
@@ -73,14 +71,11 @@
 
 # Immediately starting these applications - especially at install time - could
 # cause complications.
-- name: Enable (but don't start) desirable applications
+- name: Enable (but don't start) gdm
   systemd:
-    name: "{{ item }}"
+    name: gdm
     enabled: true
     daemon_reload: true
-  loop:
-    - NetworkManager.service
-    - gdm.service
   become: true
 
 - name: Enable and start CUPS
@@ -98,35 +93,3 @@
     enabled: true
     daemon_reload: true
   become: true
-
-- name: Create certs directory
-  file:
-    path: /etc/pki/tls/certs/
-    state: directory
-  become: true
-
-- name: Delete incorrectly named certificate
-  file:
-    path: '{{ item }}'
-    state: absent
-  loop:
-    - /etc/pki/tls/certs/RH-IT-Root-CA.crt
-    - /etc/pki/tls/certs/RH-IT-Root-CA.pem
-  become: true
-
-# See: https://mojo.redhat.com/docs/DOC-1195909
-
-- name: Install Red Hat root CA
-  copy:
-    content: '{{ workstation_rh_it_root_ca_crt }}'
-    dest: /etc/pki/tls/certs/2015-RH-IT-Root-CA.pem
-    mode: 0644
-  become: true
-
-- name: Install OpenVPN connection profile
-  copy:
-    src: RDU2.ovpn
-    dest: /etc/NetworkManager/system-connections/
-    mode: 0600
-  become: true
-  notify: Reload NetworkManager connections

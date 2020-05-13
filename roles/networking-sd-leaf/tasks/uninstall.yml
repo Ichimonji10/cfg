@@ -1,0 +1,32 @@
+---
+- block:
+
+  - name: Uninstall network management tools
+    pacman:
+      name:
+        - dhcpcd
+        - dnsmasq
+        - iwd
+        - netctl
+        - openresolv
+        - stubby
+      state: absent
+
+  - name: Delete network management tools' configuration files
+    file:
+      path: '{{ item }}'
+      state: absent
+    loop:
+      - /etc/dnsmasq-conf.conf  # dnsmasq
+      - /etc/dnsmasq-resolv.conf  # dnsmasq
+      - /etc/dnsmasq.conf  # dnsmasq
+      - /etc/iwd/  # iwd
+      - /etc/netctl/  # netctl
+      - /etc/resolv.conf  # systemd-resolved (a symlink)
+      - /etc/resolvconf.conf  # openresolv
+      - /etc/stubby.yml  # stubby
+      - /etc/systemd/network/50-wired.network  # systemd-networkd
+      - /etc/systemd/network/50-wireless.network  # systemd-networkd
+      - /etc/systemd/resolved.conf  # systemd-resolved
+
+  become: true
