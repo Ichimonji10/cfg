@@ -14,7 +14,7 @@
         - bluejeans
         - brother-hll2395dw
         - brscan4
-        - calibre
+        - calibre-python3
         - exfat-utils
         - firefox
         - gptfdisk
@@ -65,6 +65,7 @@
   - name: Uninstall applications
     pacman:
       name:
+        - calibre
         - signal-desktop-bin
       state: absent
 
