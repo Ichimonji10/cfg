@@ -11,7 +11,7 @@
       - "{{ user_ichimonji10_home }}/code"
 
   - name: Install ~/.vimrc
-    template:
+    copy:
       src: vimrc
       dest: "{{ user_ichimonji10_home }}/.vimrc"
 
