@@ -73,12 +73,12 @@ set_ps1() {
     fi
     if [ -n "$(git_branch)" ]; then
         PS1+="[${turquoise}"
-        PS1+='branch:$(git_branch)'
+        PS1+='↑:$(git_branch)'
         PS1+="${reset}]"
     fi
     if [ -n "$(python_virtualenv)" ]; then
         PS1+="[${turquoise}"
-        PS1+='venv:$(python_virtualenv)'
+        PS1+='🐍:$(python_virtualenv)'
         PS1+="${reset}]"
     fi
     PS1+='
