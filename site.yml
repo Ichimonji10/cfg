@@ -27,13 +27,14 @@
   roles:
     - transmission
 
-- hosts: mnemosyne_hosts
-  roles:
-    - mnemosyne
+# Requisite package is unavailable
+# - hosts: mnemosyne_hosts
+#   roles:
+#     - mnemosyne
 
 - hosts: webservers
   roles:
-    - airsonic
+    # - airsonic  # requisite package is unavailable
     - borg-backup-system
     - nginx  # Make sure to install SSL certificates.
 
@@ -70,9 +71,10 @@
   roles:
     - syncthing
 
-- hosts: uefi_hosts
-  roles:
-    - uefi
+# Requisite package is unavailable
+# - hosts: uefi_hosts
+#   roles:
+#     - uefi
 
 - hosts: vm_hosts
   roles:
