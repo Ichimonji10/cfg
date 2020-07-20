@@ -11,12 +11,33 @@
     - networking-nm-leaf
     - nftables-leaf
 
-# disorganized, should reorganize to match inventory ###############################################
+# workstations & servers ###########################################################################
 
-# Make custom packages available to subsequent roles.
+- hosts: workstations
+  roles:
+    - borg-backup-users
+    - dev-env
+    - workstation
+
+- hosts: servers
+  roles:
+    - sshd
+
+- hosts: bittorrent_hosts
+  roles:
+    - transmission
+
+- hosts: mnemosyne_hosts
+  roles:
+    - mnemosyne
+
 - hosts: webservers
   roles:
+    - airsonic
+    - borg-backup-system
     - nginx  # Make sure to install SSL certificates.
+
+# other ############################################################################################
 
 - hosts: all
   roles:
@@ -31,28 +52,9 @@
     - ucode
     - user-ichimonji10
 
-- hosts: coreboot_hosts
+- hosts: apc_hosts
   roles:
-    - coreboot
-
-- hosts: uefi_hosts
-  roles:
-    - uefi
-
-- hosts: workstations
-  roles:
-    - borg-backup-users
-    - dev-env
-    - workstation
-
-- hosts: syncthing_hosts
-  roles:
-    - syncthing
-
-- hosts: vm_hosts
-  roles:
-    - dockerd
-    - libvirtd
+    - apcupsd
 
 - hosts: btrfs_hosts
   roles:
@@ -60,23 +62,19 @@
     - btrfs-scrub
     - btrfs-subvolume
 
-- hosts: servers
+- hosts: coreboot_hosts
   roles:
-    - sshd
+    - coreboot
 
-- hosts: apc_hosts
+- hosts: syncthing_hosts
   roles:
-    - apcupsd
+    - syncthing
 
-- hosts: bittorrent_hosts
+- hosts: uefi_hosts
   roles:
-    - transmission
+    - uefi
 
-- hosts: mnemosyne_hosts
+- hosts: vm_hosts
   roles:
-    - mnemosyne
-
-- hosts: webservers
-  roles:
-    - airsonic
-    - borg-backup-system
+    - dockerd
+    - libvirtd
