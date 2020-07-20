@@ -1,29 +1,19 @@
 ---
 - block:
 
-  - name: 'Install /etc/pacman.d/null.conf'
-    copy:
-      src: 'etc_pacman.d/null.conf'
-      dest: /etc/pacman.d/
-
-  # Routers shouldn't be consuming AUR packages.
-  #
-  # Webservers host custom repositories, and already have /etc/pacman.d/*.conf
-  # files defining how to access said custom repositories.
-  - name: Install /etc/pacman.d/ichi-public.conf
-    copy:
-      src: etc_pacman.d/ichi-public.conf
-      dest: /etc/pacman.d/
-    notify: Sync ichi-public repository
-    when: '"webservers" not in group_names'
-
-  - name: Delete ichi-private configuration files
+  - name: Delete outdated files
     file:
       path: '{{ item }}'
       state: absent
     loop:
-      - /etc/pacman.d/ichi-private.netrc
       - /etc/pacman.d/ichi-private.conf
+      - /etc/pacman.d/ichi-private.netrc
+      - /etc/pacman.d/ichi-public.conf
+
+  - name: 'Install /etc/pacman.d/null.conf'
+    copy:
+      src: 'etc_pacman.d/null.conf'
+      dest: /etc/pacman.d/
 
   - name: Install /etc/pacman.conf
     template:

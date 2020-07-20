@@ -16,7 +16,6 @@
 # Make custom packages available to subsequent roles.
 - hosts: webservers
   roles:
-    - custom-repo  # TODO: drop
     - nginx  # Make sure to install SSL certificates.
 
 - hosts: all

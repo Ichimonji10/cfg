@@ -6,7 +6,6 @@
         name:
           - dmidecode  # learn hardware w/o probing; libvirt complains if absent
           - edk2-ovmf
-          - libguestfs
           - libvirt
           - openbsd-netcat  # libvirt management over ssh
           - qemu  # libvirt backend

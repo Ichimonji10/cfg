@@ -27,5 +27,3 @@ Variables:
 * `transmission_password`: Optional. If omitted, certain tasks are skipped. A
   password to use when setting the htpasswd file for
   https://transmission.jerebear.name/downloads/
-* `pacman_conf_repo_passwords`: A dict mapping repository names to passwords for
-  accessing them. If needed entries are absent, certain tasks are skipped.

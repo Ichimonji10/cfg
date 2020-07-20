@@ -1,38 +1,4 @@
 ---
-custom_repos:
-  - path_prefix: /srv/packages.jerebear.name/arch-linux
-    name: ichi-public
-    packages:
-      # airsonic role
-      - airsonic
-
-      # custom-repo role
-      - aurutils
-
-      # dev-env role
-      - bandwidth
-      - vim-badwolf-git
-      - vim-hemisu-git
-      - vim-undotree
-
-      # libvirtd role
-      - libguestfs
-
-      # mnemosyne role
-      - mnemosyne
-
-      # uefi role
-      - systemd-boot-pacman-hook
-
-      # workstation role
-      - bluejeans
-      - brother-hll2395dw
-      - brscan4
-      - mnemosyne
-      - ms-sys
-
-pacman_conf_repo_passwords: '{{ vault_pacman_conf_repo_passwords }}'
-
 ssh_keypairs: '{{ vault_ssh_keypairs }}'
 
 # vim:ft=yaml:

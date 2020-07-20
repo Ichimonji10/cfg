@@ -16,4 +16,10 @@
         - /usr/local/bin/libvirtd-networking-start
         - /usr/local/bin/libvirtd-networking-stop
 
+    # Available through AUR only
+    - name: Uninstall libguestfs
+      pacman:
+        name: libguestfs
+        state: absent
+
   become: true

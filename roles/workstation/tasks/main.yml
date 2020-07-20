@@ -11,9 +11,6 @@
   - name: Install applications
     pacman:
       name:
-        - bluejeans
-        - brother-hll2395dw
-        - brscan4
         - calibre-python3
         - exfat-utils
         - firefox
@@ -22,8 +19,6 @@
         - iperf3
         - lshw
         - lsof
-        - mnemosyne
-        - ms-sys
         - noto-fonts
         - noto-fonts-cjk
         - noto-fonts-emoji
@@ -35,7 +30,6 @@
         - signal-desktop
         - sshfs
         - steam
-        - texlive-core  # for mnemosyne
         - ttf-dejavu
         - unzip
         - virt-manager
@@ -63,8 +57,14 @@
   - name: Uninstall applications
     pacman:
       name:
+        - bluejeans
+        - brother-hll2395dw
+        - brscan4
         - calibre
+        - mnemosyne
+        - ms-sys
         - signal-desktop-bin
+        - texlive-core  # for mnemosyne
       state: absent
 
   become: true
