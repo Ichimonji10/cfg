@@ -12,6 +12,7 @@
     pacman:
       name:
         - calibre-python3
+        - cups
         - exfat-utils
         - firefox
         - gptfdisk
