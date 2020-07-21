@@ -45,6 +45,7 @@
         - python-wheel
         - shellcheck
         - sshpass  # optional for ansible
+        - tigervnc
         - tmate
         - tmux
         - twine
