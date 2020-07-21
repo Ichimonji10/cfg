@@ -13,9 +13,15 @@
       mode: 0600
     notify: Reload NetworkManager connections
 
-  - name: Install dnsmasq (for connection sharing)
+  - name: Install dnsmasq (for connection sharing and DNS VPN)
     pacman:
       name: dnsmasq
       state: present
+
+  - name: Make NetworkManager use dnsmasq
+    copy:
+      src: dns.conf
+      dest: /etc/NetworkManager/conf.d/
+    notify: Reload NetworkManager connections
 
   become: true
