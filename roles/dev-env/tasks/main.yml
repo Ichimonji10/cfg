@@ -6,11 +6,15 @@
     pacman:
       name:
         - bandwidth
+        - gobject-introspection
+        - heaptrack
         - jdk8-openjdk
         - jq
         - maven
         - python-rst2pdf
         - python36
+        - rust
+        - rust-docs
         - sbt
         - scala
         - spin
@@ -23,13 +27,10 @@
         - ansible-lint
         - cmark
         - ctags
-        - desktop-file-utils
         - devtools
         - entr
         - git
-        - gobject-introspection
         - graphviz
-        - heaptrack
         - ipv6calc
         - mypy
         - namcap
@@ -42,8 +43,6 @@
         - python-pylint
         - python-sphinx
         - python-wheel
-        - rust
-        - rust-docs
         - shellcheck
         - sshpass  # optional for ansible
         - tmate
