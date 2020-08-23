@@ -13,6 +13,7 @@
       name:
         - calibre-python3
         - cups
+        - discord
         - exfat-utils
         - firefox
         - gptfdisk
