@@ -28,12 +28,14 @@
         - cmark
         - ctags
         - devtools
+        - docker-compose
         - entr
         - git
         - graphviz
         - ipv6calc
         - mypy
         - namcap
+        - npm
         - pacman-contrib
         - postgresql-libs  # for iqe-tests
         - python-dnspython  # for ansible's dig lookup plugin
