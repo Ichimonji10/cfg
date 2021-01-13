@@ -1,0 +1,9 @@
+---
+version: '3.8'
+
+services:
+  web:
+    image: jaudet/my-nginx
+    build: my-nginx
+    ports:
+      - '80'
