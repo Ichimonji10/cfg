@@ -6,4 +6,4 @@ services:
     image: jaudet/my-nginx
     build: my-nginx
     ports:
-      - '80'
+      - '80:80'
