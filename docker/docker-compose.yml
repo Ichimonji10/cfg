@@ -16,6 +16,6 @@ services:
 
 secrets:
   www.backtobasicsreading.com.key:
-    file: my-nginx/ssl/www.backtobasicsreading.com.key
+    file: my-nginx/ssl-keys/www.backtobasicsreading.com.key
   www.jerebear.name.key:
-    file: my-nginx/ssl/www.jerebear.name.key
+    file: my-nginx/ssl-keys/www.jerebear.name.key
