@@ -9,9 +9,13 @@ services:
       - '80:80'
       - '443:443'
     secrets:
+      - source: www.backtobasicsreading.com.key
+        target: /etc/nginx/ssl/www.backtobasicsreading.com.key
       - source: www.jerebear.name.key
         target: /etc/nginx/ssl/www.jerebear.name.key
 
 secrets:
+  www.backtobasicsreading.com.key:
+    file: my-nginx/ssl/www.backtobasicsreading.com.key
   www.jerebear.name.key:
     file: my-nginx/ssl/www.jerebear.name.key
