@@ -7,3 +7,11 @@ services:
     build: my-nginx
     ports:
       - '80:80'
+      - '443:443'
+    secrets:
+      - source: www.jerebear.name.key
+        target: /etc/nginx/ssl/www.jerebear.name.key
+
+secrets:
+  www.jerebear.name.key:
+    file: my-nginx/ssl/www.jerebear.name.key
