@@ -1,4 +1,4 @@
-pacman-conf
+pacman_conf
 ===========
 
 Configure pacman.conf(5) and the files it includes, and schedule maintenance.
@@ -21,7 +21,7 @@ Sample Playbook
 
     - hosts: all
       roles:
-        - pacman-repos
+        - pacman_conf
 
 .. _paccache: https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache
 .. _reflector: https://wiki.archlinux.org/index.php/Reflector

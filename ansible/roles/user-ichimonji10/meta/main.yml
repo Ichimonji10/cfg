@@ -1,6 +1,6 @@
 ---
 # The dev-env role installs tools referenced by various config files.
-# The essential-apps role installs tools referenced by various config files.
+# The essential_apps role installs tools referenced by various config files.
 # The group-wheel role configures the "wheel" group.
 # The libvirtd role creates the libvirt group.
 # The group-media role creates the media group.
@@ -8,7 +8,7 @@
 dependencies:
   - role: dev-env
     when: "'workstations' in group_names"
-  - role: essential-apps
+  - role: essential_apps
   - role: group-wheel
   - role: dockerd
     when: "'vm_hosts' in group_names"

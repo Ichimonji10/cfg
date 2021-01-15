@@ -23,10 +23,10 @@
 - hosts: all
   roles:
     - crda
-    - essential-apps
-    - lm-sensors
+    - essential_apps
+    - lm_sensors
     - locale
-    - pacman-conf
+    - pacman_conf
     - smartd
     - time
     - ucode
