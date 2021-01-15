@@ -1,5 +1,0 @@
----
-- include_tasks: install.yml
-  when: networking_sd_leaf_install
-- include_tasks: uninstall.yml
-  when: not networking_sd_leaf_install

@@ -1,5 +1,5 @@
-nftables-leaf
-=============
+leaf_nft
+========
 
 Install and configure nftables for a leaf host.
 

@@ -3,8 +3,8 @@
 
 - hosts: network_leaves
   roles:
-    - networking-nm-leaf
-    - nftables-leaf
+    - leaf_net_nm
+    - leaf_nft
 
 # workstations & servers ###########################################################################
 

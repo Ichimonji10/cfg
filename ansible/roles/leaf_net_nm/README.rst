@@ -1,16 +1,16 @@
-networking-nm-leaf
-==================
+leaf_net_nm
+===========
 
 Manage networking with NetworkManager and related tools for a leaf host.
 
 Variables
 ---------
 
-``networking_nm_leaf_has_gui``
+``leaf_net_nm_has_gui``
     Whether the target host has a GUI or not. If so, additional applications or services may be
     installed and configured.
 
-``networking_nm_leaf_install``
+``leaf_net_nm_install``
     Whether this role should install and configure applications and services, or uninstall and
     delete configuration files.
 

@@ -1,0 +1,11 @@
+---
+- include_tasks: install.yml
+  when: leaf_net_nm_install
+
+- include_tasks: install-gui.yml
+  when:
+    - leaf_net_nm_has_gui
+    - leaf_net_nm_install
+
+- include_tasks: uninstall.yml
+  when: not leaf_net_nm_install
