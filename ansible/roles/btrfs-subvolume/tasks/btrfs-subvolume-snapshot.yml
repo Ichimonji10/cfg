@@ -1,26 +1,17 @@
 ---
-- name: Create {{ btrfs_subvolume.path }}/../snapshots/{{ btrfs_subvolume.path | basename }}
-  file:
-    path: '{{ btrfs_subvolume.path }}/../snapshots/{{ btrfs_subvolume.path | basename }}'
-    state: directory
-    mode: 0755
-  when: btrfs_subvolume.snapshot | default(true)
-  become: true
+- block:
 
-- name: Start and enable btrfs-subvolume-snapshot@{{ btrfs_subvolume.escaped_path }}.timer
-  systemd:
-    name: btrfs-subvolume-snapshot@{{ btrfs_subvolume.escaped_path }}.timer
-    state: started
-    enabled: true
-    daemon_reload: true
-  when: btrfs_subvolume.snapshot | default(true)
-  become: true
+  - name: Create {{ btrfs_subvolume.path }}/../snapshots/{{ btrfs_subvolume.path | basename }}
+    file:
+      path: '{{ btrfs_subvolume.path }}/../snapshots/{{ btrfs_subvolume.path | basename }}'
+      state: directory
+      mode: 0755
 
-- name: Stop and disable btrfs-subvolume-snapshot@{{ btrfs_subvolume.escaped_path }}.timer
-  systemd:
-    name: btrfs-subvolume-snapshot@{{ btrfs_subvolume.escaped_path }}.timer
-    state: stopped
-    enabled: false
-    daemon_reload: true
-  when: not (btrfs_subvolume.snapshot | default(true))
+  - name: Start and enable btrfs-subvolume-snapshot@{{ btrfs_subvolume.escaped_path }}.timer
+    systemd:
+      name: btrfs-subvolume-snapshot@{{ btrfs_subvolume.escaped_path }}.timer
+      state: started
+      enabled: true
+      daemon_reload: true
+
   become: true

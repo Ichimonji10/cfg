@@ -1,31 +1,32 @@
 ---
-- name: Install btrfs-progs
-  pacman:
-    name: btrfs-progs
-    state: present
-  become: true
-
 - name: Set escaped paths for btrfs subvolumes
   set_fact:
     btrfs_subvolumes: '{{ btrfs_subvolumes | set_escaped_paths }}'
 
-- name: Install script to delete old subvolumes
-  copy:
-    src: btrfs-subvolume-delete.py
-    dest: /usr/local/bin/
-    mode: 0755
-  become: true
+- block:
 
-- name: Install template units to create and delete snapshots
-  copy:
-    src: '{{ item }}'
-    dest: /etc/systemd/system/{{ item }}
-    mode: 0644
-  loop:
-    - btrfs-subvolume-delete@.service
-    - btrfs-subvolume-delete@.timer
-    - btrfs-subvolume-snapshot@.service
-    - btrfs-subvolume-snapshot@.timer
+  - name: Install btrfs-progs
+    pacman:
+      name: btrfs-progs
+      state: present
+
+  - name: Install script to delete old subvolumes
+    copy:
+      src: btrfs-subvolume-delete.py
+      dest: /usr/local/bin/
+      mode: 0755
+
+  - name: Install units to create and delete snapshots
+    copy:
+      src: '{{ item }}'
+      dest: /etc/systemd/system/{{ item }}
+      mode: 0644
+    loop:
+      - btrfs-subvolume-delete@.service
+      - btrfs-subvolume-delete@.timer
+      - btrfs-subvolume-snapshot@.service
+      - btrfs-subvolume-snapshot@.timer
+
   become: true
 
 - include_tasks: btrfs-subvolume-delete.yml
