@@ -23,10 +23,6 @@
   roles:
     - sshd
 
-- hosts: bittorrent_hosts
-  roles:
-    - transmission
-
 # Requisite package is unavailable
 # - hosts: mnemosyne_hosts
 #   roles:
