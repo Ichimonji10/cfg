@@ -14,7 +14,5 @@ dependencies:
     when: "'vm_hosts' in group_names"
   - role: libvirtd
     when: "'vm_hosts' in group_names"
-  - role: group-media
-    when: "'webservers' in group_names"
   - role: workstation
     when: "'workstations' in group_names"

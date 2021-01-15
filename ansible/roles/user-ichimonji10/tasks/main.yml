@@ -26,11 +26,6 @@
     - wireshark
   when: "'workstations' in group_names"
 
-- name: Append "media" the the list of groups
-  set_fact:
-    user_ichimonji10_groups: '{{ user_ichimonji10_groups + ["media"] }}'
-  when: "'webservers' in group_names"
-
 - name: Create ichimonji10
   user:
     name: ichimonji10

@@ -7,4 +7,3 @@ No variables are used. The firewall that's installed differs depending on whethe
 following groups:
 
 * ``vm_hosts``
-* ``webservers``
