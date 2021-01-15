@@ -1,5 +1,0 @@
----
-nftables_branch_downstream_if: enp1s0
-nftables_branch_upstream_if: wlp4s0
-
-# vim:ft=yaml:

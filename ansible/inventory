@@ -1,15 +1,11 @@
 # network branches & leaves ########################################################################
 
-# These hosts forward packets between an upstream interface and a downstream interface, probably
-# wireless and wired respectively.
-[network_branches]
-amelanchier.jerebear.name
-aronia.jerebear.name
-
 # These hosts exist at the network edge, and do not forward packets.
 [network_leaves]
-pine.jerebear.name
+amelanchier.jerebear.name
+aronia.jerebear.name
 beech.jerebear.name
+pine.jerebear.name
 tupelo.jerebear.name
 
 # workstations & servers ###########################################################################

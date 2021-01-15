@@ -1,11 +1,6 @@
 ---
 # network branches & leaves ########################################################################
 
-- hosts: network_branches
-  roles:
-    - networking-nm-branch
-    - nftables-branch
-
 - hosts: network_leaves
   roles:
     - networking-nm-leaf
