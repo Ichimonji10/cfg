@@ -13,8 +13,8 @@
   become: true
   become_user: '{{ item }}'
   when:
-  - '"servers" in group_names'
-  - result.stdout != 'yes'
+    - '"servers" in group_names'
+    - result.stdout != 'yes'
 
 - name: Get passwd information about {{ item }}
   getent:
