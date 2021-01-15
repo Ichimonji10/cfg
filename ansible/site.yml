@@ -23,11 +23,6 @@
   roles:
     - sshd
 
-# Requisite package is unavailable
-# - hosts: mnemosyne_hosts
-#   roles:
-#     - mnemosyne
-
 - hosts: webservers
   roles:
     - borg-backup-system

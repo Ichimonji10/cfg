@@ -62,10 +62,8 @@
         - brother-hll2395dw
         - brscan4
         - calibre
-        - mnemosyne
         - ms-sys
         - signal-desktop-bin
-        - texlive-core  # for mnemosyne
       state: absent
 
   become: true

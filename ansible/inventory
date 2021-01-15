@@ -27,15 +27,11 @@ pine.jerebear.name
 
 [servers:children]
 bittorrent_hosts
-mnemosyne_hosts
 webservers
 
 # This group should only contain one host. This is because bittorrent requires an open port to
 # function correctly, and only one port is available from the VPN provider.
 [bittorrent_hosts]
-pine.jerebear.name
-
-[mnemosyne_hosts]
 pine.jerebear.name
 
 [webservers]
