@@ -1,4 +1,0 @@
----
-syncthing_password: '{{ vault_syncthing_password }}'
-
-# vim:ft=yaml:
