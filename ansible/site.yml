@@ -23,10 +23,6 @@
   roles:
     - sshd
 
-- hosts: webservers
-  roles:
-    - borg-backup-system
-
 # other ############################################################################################
 
 - hosts: all
