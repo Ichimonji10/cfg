@@ -3,8 +3,8 @@ version: '3.8'
 
 services:
   web:
-    image: jaudet/my-nginx
-    build: my-nginx
+    image: jaudet/nginx
+    build: nginx
     ports:
       - '80:80'
       - '443:443'
@@ -16,6 +16,6 @@ services:
 
 secrets:
   www.backtobasicsreading.com.key:
-    file: my-nginx/ssl-keys/www.backtobasicsreading.com.key
+    file: nginx/ssl-keys/www.backtobasicsreading.com.key
   www.jerebear.name.key:
-    file: my-nginx/ssl-keys/www.jerebear.name.key
+    file: nginx/ssl-keys/www.jerebear.name.key
