@@ -34,7 +34,6 @@
 
 - hosts: webservers
   roles:
-    # - airsonic  # requisite package is unavailable
     - borg-backup-system
 
 # other ############################################################################################
