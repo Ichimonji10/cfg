@@ -1,7 +1,5 @@
 ---
-- name: >
-    Start and enable
-    btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
+- name: Start and enable btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
   systemd:
     name: btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
     state: started
@@ -10,9 +8,7 @@
   when: btrfs_subvolume.delete | default(true)
   become: true
 
-- name: >
-    Stop and disable
-    btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
+- name: Stop and disable btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
   systemd:
     name: btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
     state: stopped
