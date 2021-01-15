@@ -4,9 +4,6 @@ btrfs_paths:
 
 btrfs_subvolumes:
   - path: '{{ btrfs_paths[0] }}/srv-media'
-  - path: '{{ btrfs_paths[0] }}/-srv-media'
-    snapshot: false
-    delete: false
 
 syncthing_usernames:
   - ichimonji10
