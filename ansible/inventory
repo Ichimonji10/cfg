@@ -25,14 +25,6 @@ amelanchier.jerebear.name
 aronia.jerebear.name
 pine.jerebear.name
 
-[servers:children]
-bittorrent_hosts
-
-# This group should only contain one host. This is because bittorrent requires an open port to
-# function correctly, and only one port is available from the VPN provider.
-[bittorrent_hosts]
-pine.jerebear.name
-
 # other ############################################################################################
 
 # Each of these systems has an APC brand UPS attached.
