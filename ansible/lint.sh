@@ -21,6 +21,6 @@ ansible-lint -x 405,501,701 site.yml &
 find . -type f -name '*.py' -print0 | xargs -0 pylint &
 find . -type d -name templates -prune -o -type f -name '*.sh' -print0 | xargs -0 shellcheck &
 ansible-playbook site.yml --syntax-check &
-yamllint --strict . &
+yamllint --strict --config-data '{rules: {line-length: {max: 100}}}' . &
 
 wait
