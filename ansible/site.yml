@@ -36,7 +36,6 @@
   roles:
     # - airsonic  # requisite package is unavailable
     - borg-backup-system
-    - nginx  # Make sure to install SSL certificates.
 
 # other ############################################################################################
 
