@@ -6,20 +6,6 @@
       name: btrfs-progs
       state: present
 
-  - name: Delete outdated units for btrfs balances
-    file:
-      path: /etc/systemd/system/{{ item }}
-      state: absent
-    loop:
-      - btrfs-balance.service
-      - btrfs-balance.timer
-    register: result
-
-  - name: Reload systemd
-    systemd:
-      daemon_reload: true
-    when: result is changed
-
   - name: Install units for btrfs balances
     copy:
       src: '{{ item }}'

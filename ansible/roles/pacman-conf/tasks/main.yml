@@ -1,15 +1,6 @@
 ---
 - block:
 
-  - name: Delete outdated files
-    file:
-      path: '{{ item }}'
-      state: absent
-    loop:
-      - /etc/pacman.d/ichi-private.conf
-      - /etc/pacman.d/ichi-private.netrc
-      - /etc/pacman.d/ichi-public.conf
-
   - name: 'Install /etc/pacman.d/null.conf'
     copy:
       src: 'etc_pacman.d/null.conf'
@@ -31,17 +22,6 @@
   - name: Install reflector
     pacman:
       name: reflector
-
-  # Try executing `systemctl list-unit-files | grep update`. You'll find that
-  # units named verb-noun are atypical, and units named noun-verb are typical.
-  - name: Delete old mirrorlist units
-    file:
-      path: /etc/systemd/system/update-mirrorlist.{{ item }}
-      state: absent
-    loop:
-      - timer
-      - service
-    register: result
 
   - name: Reload systemd
     systemd:
