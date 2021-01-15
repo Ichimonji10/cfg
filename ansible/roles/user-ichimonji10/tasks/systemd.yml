@@ -5,11 +5,13 @@
     file:
       path: "{{ user_ichimonji10_home }}/.config/systemd/user"
       state: directory
+      mode: 0700
 
   - name: Install sphinx-rebuild.service
     template:
       src: sphinx-rebuild.service
       dest: "{{ user_ichimonji10_home }}/.config/systemd/user/"
+      mode: 0600
 
   - name: Start and enable sphinx-rebuild.service
     systemd:

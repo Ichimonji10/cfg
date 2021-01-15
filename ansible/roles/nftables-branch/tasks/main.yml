@@ -15,6 +15,7 @@
     template:
       src: nftables.conf
       dest: /etc/nftables.conf
+      mode: 0644
     notify: Reload nftables
 
   - name: Start and enable nftables

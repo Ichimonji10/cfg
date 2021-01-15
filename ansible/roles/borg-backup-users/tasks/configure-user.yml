@@ -19,6 +19,7 @@
       file:
         path: '{{ borg_backup_user_home }}/{{ item }}'
         state: directory
+        mode: 0700
       loop:
         - .local/bin
         - .ssh
@@ -52,11 +53,13 @@
       template:
         src: borg-backup.service
         dest: '{{ borg_backup_user_home }}/.config/systemd/user/'
+        mode: 0600
 
     - name: Install borg-backup.timer
       copy:
         src: borg-backup.timer
         dest: '{{ borg_backup_user_home }}/.config/systemd/user/'
+        mode: 0600
 
     # XDG_RUNTIME_DIR must be set, or else the systemd module will be unable to
     # contact the user's DBus instance. In no particular order, see:

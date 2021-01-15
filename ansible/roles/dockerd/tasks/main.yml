@@ -9,6 +9,7 @@
       copy:
         src: daemon.json
         dest: /etc/docker/
+        mode: 0644
       notify: Restart docker
 
     - name: Start and enable dockerd

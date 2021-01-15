@@ -14,11 +14,13 @@
     copy:
       src: 'etc_pacman.d/null.conf'
       dest: /etc/pacman.d/
+      mode: 0644
 
   - name: Install /etc/pacman.conf
     template:
       src: pacman.conf
       dest: /etc/pacman.conf
+      mode: 0644
     notify: Sync all repositories
 
   # If pacman is configured to use a repository but has never synced it, then
@@ -50,6 +52,7 @@
     copy:
       src: etc_systemd_system/
       dest: /etc/systemd/system/
+      mode: 0644
 
   - name: Start and enable timers
     systemd:

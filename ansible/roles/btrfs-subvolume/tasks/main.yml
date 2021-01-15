@@ -20,6 +20,7 @@
   copy:
     src: '{{ item }}'
     dest: /etc/systemd/system/{{ item }}
+    mode: 0644
   loop:
     - btrfs-subvolume-delete@.service
     - btrfs-subvolume-delete@.timer

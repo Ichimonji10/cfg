@@ -5,11 +5,13 @@
     file:
       name: '{{ user_ichimonji10_home }}/.config/git/'
       state: directory
+      mode: 0700
 
   - name: Install git config files
     copy:
       src: config_git/
       dest: '{{ user_ichimonji10_home }}/.config/git/'
+      mode: 0700
 
   - name: Remove old git config files
     file:

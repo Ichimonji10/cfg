@@ -5,6 +5,7 @@
     file:
       path: "{{ item }}"
       state: directory
+      mode: 0700
     loop:
       - "{{ user_ichimonji10_home }}/.cache/custom-ctags"
       - "{{ user_ichimonji10_home }}/.vim/undo"
@@ -14,6 +15,7 @@
     template:
       src: vimrc
       dest: "{{ user_ichimonji10_home }}/.vimrc"
+      mode: 0600
 
   become: true
   become_user: ichimonji10

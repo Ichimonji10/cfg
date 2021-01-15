@@ -22,6 +22,7 @@
     copy:
       src: dns.conf
       dest: /etc/NetworkManager/conf.d/
+      mode: 0644
     notify: Reload NetworkManager connections
 
   become: true

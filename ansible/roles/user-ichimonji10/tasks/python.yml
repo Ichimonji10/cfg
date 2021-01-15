@@ -5,16 +5,19 @@
     copy:
       src: pypirc
       dest: '{{ user_ichimonji10_home }}/.pypirc'
+      mode: 0600
 
   - name: Create ~/.config/pip/
     file:
       path: '{{ user_ichimonji10_home }}/.config/pip'
       state: directory
+      mode: 0700
 
   - name: Install pip.conf
     copy:
       src: pip.conf
       dest: '{{ user_ichimonji10_home }}/.config/pip/pip.conf'
+      mode: 0600
 
   become: true
   become_user: ichimonji10

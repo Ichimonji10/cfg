@@ -17,6 +17,7 @@
     copy:
       src: '{{ item }}'
       dest: /etc/systemd/system/{{ item }}
+      mode: 0644
     loop:
       - dynamic-dns.service
       - dynamic-dns.timer

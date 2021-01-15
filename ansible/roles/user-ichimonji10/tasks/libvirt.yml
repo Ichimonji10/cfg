@@ -5,11 +5,13 @@
     file:
       state: directory
       path: "{{ user_ichimonji10_home }}/.config/libvirt"
+      mode: 0700
 
   - name: Install libvirt configuration file
     copy:
       src: libvirt.conf
       dest: "{{ user_ichimonji10_home }}/.config/libvirt/libvirt.conf"
+      mode: 0600
 
   become: true
   become_user: ichimonji10

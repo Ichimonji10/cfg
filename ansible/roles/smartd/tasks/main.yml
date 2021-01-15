@@ -9,6 +9,7 @@
     copy:
       src: smartd.conf
       dest: /etc/smartd.conf
+      mode: 0644
 
   - name: Start and enable smartd
     systemd:
@@ -26,6 +27,7 @@
     copy:
       src: etc_systemd_system/
       dest: /etc/systemd/system/
+      mode: 0644
 
   - name: Start and enable timers for starting SMART scans
     systemd:

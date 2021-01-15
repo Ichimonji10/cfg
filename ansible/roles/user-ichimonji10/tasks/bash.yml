@@ -5,11 +5,13 @@
     file:
       path: "{{ user_ichimonji10_home }}/.local/bin"
       state: directory
+      mode: 0700
 
   - name: Install ~/.bashrc
     copy:
       src: bashrc
       dest: "{{ user_ichimonji10_home }}/.bashrc"
+      mode: 0600
 
   become: true
   become_user: ichimonji10

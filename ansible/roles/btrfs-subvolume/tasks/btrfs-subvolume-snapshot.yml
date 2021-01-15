@@ -8,6 +8,7 @@
       {{ btrfs_subvolume.path }}/../snapshots/{{
       btrfs_subvolume.path | basename }}
     state: directory
+    mode: 0755
   when: btrfs_subvolume.snapshot | default(true)
   become: true
 
