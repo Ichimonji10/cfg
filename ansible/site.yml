@@ -28,7 +28,6 @@
 - hosts: all
   roles:
     - crda
-    - dynamic-dns
     - essential-apps
     - lm-sensors
     - locale

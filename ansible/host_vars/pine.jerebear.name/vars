@@ -8,8 +8,6 @@ btrfs_subvolumes:
     snapshot: false
     delete: false
 
-dynamic_dns_urls: '{{ vault_dynamic_dns_urls }}'
-
 syncthing_usernames:
   - ichimonji10
 
