@@ -20,7 +20,7 @@
       state: absent
     when: "'servers' not in group_names"
 
-  - name: Install private SSH keys on network leaves
+  - name: Install private SSH keys on workstations
     copy:
       dest: '{{ user_ichimonji10_home }}/.ssh/keys/{{ item }}'
       content: '{{ ssh_keypairs[item]["ichimonji10"]["private"] }}'
@@ -29,7 +29,7 @@
       - amelanchier.jerebear.name
       - aronia.jerebear.name
       - pine.jerebear.name
-    when: "'network_leaves' in group_names"
+    when: "'workstations' in group_names"
 
   - name: Uninstall outdated SSH keys
     file:

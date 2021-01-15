@@ -1,11 +1,4 @@
 ---
-# network branches & leaves ########################################################################
-
-- hosts: network_leaves
-  roles:
-    - leaf_net_nm
-    - leaf_nft
-
 # workstations & servers ###########################################################################
 
 - hosts: workstations
@@ -26,6 +19,8 @@
     - essential_apps
     - lm_sensors
     - locale
+    - net_nm
+    - nft
     - pacman_conf
     - smartd
     - time

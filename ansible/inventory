@@ -1,13 +1,3 @@
-# network branches & leaves ########################################################################
-
-# These hosts exist at the network edge, and do not forward packets.
-[network_leaves]
-amelanchier.jerebear.name
-aronia.jerebear.name
-beech.jerebear.name
-pine.jerebear.name
-tupelo.jerebear.name
-
 # workstations & servers ###########################################################################
 
 # These systems have GUIs, limited uptime, and no remote management capabilities.

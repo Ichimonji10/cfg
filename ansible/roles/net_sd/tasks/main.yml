@@ -1,5 +1,5 @@
 ---
 - include_tasks: install.yml
-  when: leaf_net_sd_install
+  when: net_sd_install
 - include_tasks: uninstall.yml
-  when: not leaf_net_sd_install
+  when: not net_sd_install

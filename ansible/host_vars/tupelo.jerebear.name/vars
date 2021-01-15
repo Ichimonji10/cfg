@@ -1,5 +1,5 @@
 ---
-networking_nm_leaf_has_gui: true
+net_nm_has_gui: true
 
 syncthing_usernames:
   - ichimonji10

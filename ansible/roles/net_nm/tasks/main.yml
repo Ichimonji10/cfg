@@ -1,0 +1,11 @@
+---
+- include_tasks: install.yml
+  when: net_nm_install
+
+- include_tasks: install-gui.yml
+  when:
+    - net_nm_has_gui
+    - net_nm_install
+
+- include_tasks: uninstall.yml
+  when: not net_nm_install

@@ -1,11 +1,11 @@
-leaf_net_sd
-===========
+net_sd
+======
 
-Manage networking with systemd and related tools for a leaf host.
+Manage networking with systemd and related tools.
 
 Variables
 ---------
 
-``leaf_net_sd_install``
+``net_sd_install``
     Whether this role should install and configure applications and services, or uninstall and
     delete configuration files.
