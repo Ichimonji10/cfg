@@ -1,11 +1,6 @@
 ---
 - block:
 
-    - name: Delete override file for docker.service
-      file:
-        path: /etc/systemd/system/docker.service.d/
-        state: absent
-
     - name: Install docker
       pacman:
         name: docker
