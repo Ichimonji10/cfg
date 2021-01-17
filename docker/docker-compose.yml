@@ -2,6 +2,12 @@
 version: '3.8'
 
 services:
+  ddns:
+    image: jaudet/ddns
+    build: ddns
+    secrets:
+      - source: update-ddns.sh
+        target: /usr/local/bin/update-ddns.sh
   web:
     image: jaudet/nginx
     build: nginx
@@ -15,6 +21,8 @@ services:
         target: /etc/nginx/ssl/www.jerebear.name.key
 
 secrets:
+  update-ddns.sh:
+    file: ddns/update-ddns.sh
   www.backtobasicsreading.com.key:
     file: nginx/ssl-keys/www.backtobasicsreading.com.key
   www.jerebear.name.key:

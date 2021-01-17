@@ -1,0 +1,15 @@
+---
+version: '1.4'
+
+jobs:
+  UpdateDDNS:
+    cmd: /usr/local/bin/update-ddns.sh
+    time: 'R */10 * * * *'
+    onError: Continue
+    notifyOnFailure:
+      - type: stdout
+        data:
+          - stdout
+          - stderr
+
+# vim:set ft=yaml:
