@@ -8,7 +8,7 @@ services:
     secrets:
       - source: update-ddns.sh
         target: /usr/local/bin/update-ddns.sh
-  web:
+  nginx:
     image: jaudet/nginx
     build: nginx
     ports:
