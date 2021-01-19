@@ -1,0 +1,56 @@
+---
+repos:
+  - repo: https://github.com/ansible/ansible-lint
+    rev: v4.3.7
+    hooks:
+      - id: ansible-lint
+        args:
+          # Execute `ansible-lint -L` to view all codes.
+          #
+          # 701: meta/main.yml should contain relevant info
+          #     These modules aren't being distributed on Ansible Galaxy.
+          - -x
+          - '701'
+
+  - repo: local
+    hooks:
+      - id: ansible-playbook-syntax-check
+        name: Check Ansible playbook syntax
+        entry: ansible-playbook
+        args:
+          - --syntax-check
+        language: system
+        files: '^ansible/site.yml$'
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        args:
+          # Let black handle code formatting.
+          - --disable
+          - bad-continuation,line-too-long
+          - -j
+          - '0'
+        language: system
+        types:
+          - python
+        # Invoke pylint just once, and let pylint parallelize. Doing so results in clearer output.
+        require_serial: true
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.4
+    hooks:
+      - id: shellcheck
+        exclude: '^ansible/.*/templates'
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.25.0
+    hooks:
+      - id: yamllint
+        args:
+          - -d
+          - '{rules: {line-length: {max: 100}}}'
+
+# vim:set ft=yaml:

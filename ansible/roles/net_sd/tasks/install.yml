@@ -13,11 +13,13 @@
     copy:
       src: main.conf
       dest: /etc/iwd/
+      mode: 0644
 
   - name: Install configuration file(s) for systemd-networkd
     copy:
       src: '{{ item }}'
       dest: /etc/systemd/network/
+      mode: 0644
     loop:
       - 50-wired.network
       - 50-wireless.network
@@ -26,6 +28,7 @@
     copy:
       src: resolved.conf
       dest: /etc/systemd/
+      mode: 0644
 
   - name: Start and enable networking services
     systemd:
