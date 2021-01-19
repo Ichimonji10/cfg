@@ -34,6 +34,7 @@
         - docker-compose
         - entr
         - git
+        - git-crypt
         - graphviz
         - ipv6calc
         - mypy
@@ -43,6 +44,7 @@
         - python-dnspython  # for ansible's dig lookup plugin
         - python-docutils  # for rst2html
         - python-passlib  # for ansible's htpasswd module
+        - python-pre-commit
         - python-pylint
         - python-sphinx
         - python-wheel
