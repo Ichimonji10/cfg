@@ -5,6 +5,7 @@
   - name: Uninstall unused packages
     pacman:
       name:
+        - ansible-lint
         - bandwidth
         - gobject-introspection
         - heaptrack
@@ -18,13 +19,13 @@
         - sbt
         - scala
         - spin
+        - yamllint
       state: absent
 
   - name: Install development tools
     pacman:
       name:
         - ansible
-        - ansible-lint
         - cmark
         - ctags
         - devtools
@@ -55,7 +56,6 @@
         - vim-nerdtree
         - vim-tagbar
         - wget
-        - yamllint
     notify: Set install reason for optional dependencies
 
   become: true
