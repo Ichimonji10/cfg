@@ -22,6 +22,11 @@ repos:
         language: system
         files: '^ansible/site.yml$'
 
+  - repo: https://github.com/IamTheFij/ansible-pre-commit
+    rev: v0.1.2
+    hooks:
+      - id: encryption-check
+
   - repo: local
     hooks:
       - id: pylint
