@@ -12,6 +12,8 @@
         - jdk8-openjdk
         - jq
         - maven
+        - npm
+        - python-poetry
         - python-rst2pdf
         - python36
         - rust
@@ -36,13 +38,11 @@
         - ipv6calc
         - mypy
         - namcap
-        - npm
         - pacman-contrib
         - postgresql-libs  # for iqe-tests
         - python-dnspython  # for ansible's dig lookup plugin
         - python-docutils  # for rst2html
         - python-passlib  # for ansible's htpasswd module
-        - python-poetry
         - python-pylint
         - python-sphinx
         - python-wheel
