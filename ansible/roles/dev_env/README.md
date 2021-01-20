@@ -1,4 +1,4 @@
-dev-env
+dev_env
 =======
 
 Install and configure a software development environment.

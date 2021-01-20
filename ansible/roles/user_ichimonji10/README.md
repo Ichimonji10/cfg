@@ -1,4 +1,4 @@
-user-ichimonji10
+user_ichimonji10
 ================
 
 Create and customize user ichimonji10.

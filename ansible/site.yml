@@ -3,8 +3,8 @@
 
 - hosts: workstations
   roles:
-    - borg-backup-users
-    - dev-env
+    - borg_backup_users
+    - dev_env
     - workstation
 
 - hosts: servers
@@ -25,7 +25,7 @@
     - smartd
     - time
     - ucode
-    - user-ichimonji10
+    - user_ichimonji10
 
 - hosts: apc_hosts
   roles:
@@ -33,9 +33,9 @@
 
 - hosts: btrfs_hosts
   roles:
-    - btrfs-balance
-    - btrfs-scrub
-    - btrfs-subvolume
+    - btrfs_balance
+    - btrfs_scrub
+    - btrfs_subvolume
 
 - hosts: coreboot_hosts
   roles:

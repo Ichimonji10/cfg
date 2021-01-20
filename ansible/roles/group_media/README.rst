@@ -1,4 +1,4 @@
-group-media
+group_media
 ===========
 
 Create the ``media`` group.

@@ -1,9 +1,9 @@
-btrfs-scrub
+btrfs_balance
 =============
 
-Periodically scrub a btrfs filesystem.
+Periodically balance a btrfs filesystem.
 
-Let the scrub occur infrequently, such as once a month.
+Let the balance occur infrequently, such as once a month.
 
 Example Playbook
 ----------------
@@ -12,7 +12,7 @@ Example Playbook
 
     - hosts: all
       roles:
-        - btrfs-scrub
+        - btrfs_balance
       vars:
         btrfs_paths:
           - /mnt/btrfs-fs-1
@@ -26,5 +26,5 @@ below.
 
 ``btrfs_paths``
     Paths to btrfs mount points, or subdirectories thereof. The entire mounted
-    filesystems are scrubbed, regardless of whether mount points or
+    filesystems are balanced, regardless of whether mount points or
     subdirectories are specified. Defaults to an empty list.

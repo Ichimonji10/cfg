@@ -1,4 +1,4 @@
-btrfs-subvolume
+btrfs_subvolume
 ===============
 
 Periodically create and delete snapshots of btrfs subvolumes.
@@ -24,7 +24,7 @@ Example playbook:
 
     - hosts: all
       roles:
-        - name: btrfs-subvolume
+        - name: btrfs_subvolume
           vars:
             btrfs_subvolumes:
               - path: /mnt/btrfs/home

@@ -1,4 +1,4 @@
-borg-backup-users
+borg_backup_users
 =================
 
 Configure per-user backups with `Borg`_.
@@ -22,9 +22,9 @@ Example playbook:
 
 .. code-block:: yaml
 
-    - hosts: borg-backup-users-hosts
+    _ hosts: borg_backup_users_hosts
       roles:
-        - borg-backup-users
+        - borg_backup_users
       vars:
         borg_backup_users_passphrases:
           alice: password
