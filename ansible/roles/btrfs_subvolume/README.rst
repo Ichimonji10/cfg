@@ -6,17 +6,21 @@ Periodically create and delete snapshots of btrfs subvolumes.
 This role assumes that snapshots should be created within a ``snapshots`` directory alongside the
 subvolume itself. This lends itself to a filesystem layout like so::
 
-    home
+    home  # subvolume
     srv-airsonic
-    snapshots
-        home
-            2019-01-01T13:00-04:00
+    snapshots  # directory
+        home  # directory
+            2019-01-01T13:00-04:00  # subvolume
             2019-01-02T13:00-04:00
             2019-01-03T13:00-04:00
         srv-airsonic
             2019-01-01T13:00-04:00
             2019-01-02T13:00-04:00
             2019-01-03T13:00-04:00
+
+This role creates the ``snapshots/*`` directories, and units for creating and deleting btrfs
+subvolumes in these directories. This role does not create the source subvolumes, like ``home`` in
+the example above.
 
 Example playbook:
 
