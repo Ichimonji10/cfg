@@ -9,9 +9,14 @@ services:
     secrets:
       - source: update-ddns.sh
         target: /usr/local/bin/update-ddns.sh
+
   nginx:
     image: jaudet/nginx
     build: nginx
+    depends_on:
+      - funkwhale-api
+    networks:
+      - funkwhale
     ports:
       - '80:80'
       - '443:443'
@@ -23,6 +28,110 @@ services:
         target: /etc/nginx/ssl/funkwhale.jerebear.name.key
       - source: www.jerebear.name.key
         target: /etc/nginx/ssl/www.jerebear.name.key
+    volumes:
+      # regular imports; see MEDIA_ROOT in funkwhale.env
+      - &funkwhale_volume_media_root
+        type: volume
+        source: funkwhale-srv-funkwhale-data-media
+        target: /srv/funkwhale/data/media
+        read_only: true
+      # in-place imports; see MUSIC_DIRECTORY_PATH in funkwhale.env
+      - &funkwhale_volume_music_directory_path
+        type: bind
+        source: /home/ichimonji10/Music
+        target: /srv/funkwhale/data/music
+        read_only: true
+      - &funkwhale_volume_static_root
+        type: volume
+        source: funkwhale-srv-funkwhale-data-static
+        target: /srv/funkwhale/data/static
+        read_only: true
+      - &funkwhale_volume_frontend
+        type: volume
+        source: funkwhale-frontend
+        target: /frontend
+        read_only: true
+
+  funkwhale-api:
+    depends_on:
+      - funkwhale-pg
+      - funkwhale-redis
+    env_file:
+      - &funkwhale_env_file ./funkwhale.env
+      - &funkwhale_secrets_env_file ./funkwhale-secrets.env
+    image: &funkwhale-image funkwhale/funkwhale:1.0.1
+    networks:
+      - funkwhale
+    ports:
+      - target: '5000'
+    restart: unless-stopped
+    volumes:
+      - <<: *funkwhale_volume_media_root
+        read_only: false
+      - *funkwhale_volume_music_directory_path
+      - <<: *funkwhale_volume_static_root
+        read_only: false
+      - <<: *funkwhale_volume_frontend
+        read_only: false
+
+  funkwhale-celerybeat:
+    command: ['celery', '-A', 'funkwhale_api.taskapp', 'beat', '--pidfile=', '-l', 'INFO']
+    depends_on:
+      - funkwhale-pg
+      - funkwhale-redis
+    env_file:
+      - *funkwhale_env_file
+      - *funkwhale_secrets_env_file
+    image: *funkwhale-image
+    networks:
+      - funkwhale
+    restart: unless-stopped
+
+  funkwhale-celeryworker:
+    command: ['celery', '-A', 'funkwhale_api.taskapp', 'worker', '-l', 'INFO']
+    depends_on:
+      - funkwhale-pg
+      - funkwhale-redis
+    env_file:
+      - *funkwhale_env_file
+      - *funkwhale_secrets_env_file
+    environment:
+      - 'C_FORCE_ROOT=true'
+    image: *funkwhale-image
+    networks:
+      - funkwhale
+    restart: unless-stopped
+    volumes:
+      - <<: *funkwhale_volume_media_root
+        read_only: false
+      - *funkwhale_volume_music_directory_path
+
+  funkwhale-pg:
+    environment:
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+    image: postgres:11
+    networks:
+      - funkwhale
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: funkwhale-var-lib-postgresql-data
+        target: /var/lib/postgresql/data
+        read_only: false
+
+  funkwhale-redis:
+    image: redis:5
+    networks:
+      - funkwhale
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: funkwhale-data
+        target: /data
+        read_only: false
+
+networks:
+  funkwhale:
 
 secrets:
   update-ddns.sh:
@@ -33,3 +142,10 @@ secrets:
     file: nginx/ssl-keys/funkwhale.jerebear.name.key
   www.jerebear.name.key:
     file: nginx/ssl-keys/www.jerebear.name.key
+
+volumes:
+  funkwhale-data:
+  funkwhale-srv-funkwhale-data-media:
+  funkwhale-srv-funkwhale-data-static:
+  funkwhale-var-lib-postgresql-data:
+  funkwhale-frontend:
