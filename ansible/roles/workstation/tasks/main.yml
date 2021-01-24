@@ -11,7 +11,7 @@
   - name: Install applications
     pacman:
       name:
-        - calibre-python3
+        - calibre
         - cups
         - discord
         - exfat-utils
@@ -61,7 +61,6 @@
         - bluejeans
         - brother-hll2395dw
         - brscan4
-        - calibre
         - ms-sys
         - signal-desktop-bin
       state: absent
