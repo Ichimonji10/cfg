@@ -67,8 +67,7 @@
 
   become: true
 
-# Immediately starting these applications - especially at install time - could
-# cause complications.
+# Immediately starting gdm at install time could cause complications.
 - name: Enable (but don't start) gdm
   systemd:
     name: gdm
