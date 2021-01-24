@@ -77,7 +77,7 @@
 
 - name: Enable and start CUPS
   systemd:
-    name: org.cups.cupsd
+    name: cups.service
     state: started
     enabled: true
     daemon_reload: true
