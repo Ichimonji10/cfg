@@ -5,6 +5,7 @@ services:
   ddns:
     image: jaudet/ddns
     build: ddns
+    restart: unless-stopped
     secrets:
       - source: update-ddns.sh
         target: /usr/local/bin/update-ddns.sh
@@ -14,6 +15,7 @@ services:
     ports:
       - '80:80'
       - '443:443'
+    restart: unless-stopped
     secrets:
       - source: www.backtobasicsreading.com.key
         target: /etc/nginx/ssl/www.backtobasicsreading.com.key
