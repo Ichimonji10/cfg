@@ -1,43 +1,19 @@
 ---
 - block:
 
-  - name: Install network management tools
-    pacman:
-      name:
-        - iwd
-        - systemd-networkd
-        - systemd-resolved
-      state: present
-
-  - name: Install configuration file(s) for iwd
+  - name: Install config files
     copy:
-      src: main.conf
-      dest: /etc/iwd/
-      mode: 0644
-
-  - name: Install configuration file(s) for systemd-networkd
-    copy:
-      src: '{{ item }}'
+      src: 50-wired.network
       dest: /etc/systemd/network/
       mode: 0644
-    loop:
-      - 50-wired.network
-      - 50-wireless.network
 
-  - name: Install configuration file(s) for systemd-resolved
-    copy:
-      src: resolved.conf
-      dest: /etc/systemd/
-      mode: 0644
-
-  - name: Start and enable networking services
+  - name: Start and enable network management tools
     systemd:
       name: '{{ item }}'
       state: started
       enabled: true
     loop:
-        - iwd.service
-        - systemd-networkd.service
-        - systemd-resolved.service
+      - systemd-networkd.service
+      - systemd-resolved.service
 
   become: true

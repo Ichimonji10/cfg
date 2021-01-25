@@ -5,10 +5,12 @@
   roles:
     - borg_backup_users
     - dev_env
+    - net_nm
     - workstation
 
 - hosts: servers
   roles:
+    - net_sd  # could use net_nm, for sake of homogeneity?
     - sshd
 
 # other ############################################################################################
@@ -19,7 +21,6 @@
     - essential_apps
     - lm_sensors
     - locale
-    - net_nm
     - nft
     - pacman_conf
     - smartd
