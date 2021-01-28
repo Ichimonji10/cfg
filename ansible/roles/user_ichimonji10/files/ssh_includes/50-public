@@ -1,0 +1,7 @@
+Host aur.archlinux.org
+    IdentityFile ~/.ssh/keys/aur.archlinux.org
+
+Host github.com
+    IdentityFile ~/.ssh/keys/github.com
+
+# vim:ft=sshconfig:

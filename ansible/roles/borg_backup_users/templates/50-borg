@@ -1,0 +1,5 @@
+Host {{ borg_backup_user.remote_host }}
+    User {{ borg_backup_user.remote_user }}
+    IdentityFile ~/.ssh/borg-backup
+
+# vim:ft=sshconfig:

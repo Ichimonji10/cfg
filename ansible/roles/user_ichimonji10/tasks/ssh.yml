@@ -1,26 +1,23 @@
 ---
 - block:
 
-  - name: Create ~/.ssh/keys
+  - name: Create ~/.ssh/ subdirectories
     file:
-      path: '{{ user_ichimonji10_home }}/.ssh/keys'
+      path: '{{ user_ichimonji10_home }}/.ssh/{{ item }}'
       state: directory
       mode: 0700
+    loop:
+      - includes
+      - keys
 
-  - name: Install public SSH key on servers
+  - name: Install ~/.ssh/authorized_keys (public key)
     copy:
       dest: '{{ user_ichimonji10_home }}/.ssh/authorized_keys'
       content: '{{ ssh_keypairs[inventory_hostname]["ichimonji10"]["public"] }}'
       mode: 0600
     when: "'servers' in group_names"
 
-  - name: Uninstall public SSH key from non-servers
-    file:
-      dest: '{{ user_ichimonji10_home }}/.ssh/authorized_keys'
-      state: absent
-    when: "'servers' not in group_names"
-
-  - name: Install private SSH keys on workstations
+  - name: Install ~/.ssh/keys/* (private keys)
     copy:
       dest: '{{ user_ichimonji10_home }}/.ssh/keys/{{ item }}'
       content: '{{ ssh_keypairs[item]["ichimonji10"]["private"] }}'
@@ -31,19 +28,19 @@
       - pine.jerebear.name
     when: "'workstations' in group_names"
 
-  - name: Uninstall outdated SSH keys
-    file:
-      dest: '{{ user_ichimonji10_home }}/.ssh/{{ item }}'
-      state: absent
-    loop:
-      - amelanchier.ichimonji10.name
-      - amelanchier.jerebear.name
-      - aronia.ichimonji10.name
-      - aronia.jerebear.name
-      - beech.ichimonji10.name
-      - pine.ichimonji10.name
-      - pine.jerebear.name
-      - tupelo.ichimonji10.name
+  - name: Install ~/.ssh/config
+    copy:
+      src: config
+      dest: '{{ user_ichimonji10_home }}/.ssh/'
+      mode: 0600
+    when: "'workstations' in group_names"
+
+  - name: Install ~/.ssh/includes/*
+    copy:
+      src: ssh_includes/
+      dest: '{{ user_ichimonji10_home }}/.ssh/includes/'
+      mode: 0600
+    when: "'workstations' in group_names"
 
   become: true
   become_user: ichimonji10

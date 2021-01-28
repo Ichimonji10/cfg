@@ -22,32 +22,21 @@
         mode: 0700
       loop:
         - .local/bin
-        - .ssh
+        - .ssh/includes
+        - .ssh/keys
 
-    - name: Install a private SSH key
+    - name: Install SSH private key
       copy:
         content: '{{ borg_backup_users_private_keys[borg_backup_user.local_user] }}'
-        dest: '{{ borg_backup_user_home }}/.ssh/borg-backup'
+        dest: '{{ borg_backup_user_home }}/.ssh/keys/borg-backup'
         mode: 0600
       when: borg_backup_user.local_user in borg_backup_users_private_keys
 
-    - name: Customize the user's SSH configuration file
-      blockinfile:
-        path: '{{ borg_backup_user_home }}/.ssh/config'
-        create: true
-        mode: 0600
-        block: |
-          Host {{ borg_backup_user.remote_host }}
-            User {{ borg_backup_user.remote_user }}
-            IdentityFile ~/.ssh/borg-backup
-
-    - name: Install the Borg backup script
+    - name: Install SSH config file
       template:
-        src: borg-backup.sh
-        dest: '{{ borg_backup_user_home }}/.local/bin/'
-        mode: 0700
-        validate: bash -n %s
-      when: borg_backup_user.local_user in borg_backup_users_passphrases
+        src: 50-borg
+        dest: '{{ borg_backup_user_home }}/.ssh/includes/'
+        mode: 0600
 
     - name: Install borg-backup.service
       template:
@@ -79,6 +68,11 @@
         daemon_reload: true
       environment:
         XDG_RUNTIME_DIR: /run/user/{{ borg_backup_user_id }}
+
+    - name: Delete outdated files
+      file:
+        path: '{{ borg_backup_user_home }}/.ssh/borg-backup'
+        state: absent
 
   become: true
   become_user: '{{ borg_backup_user.local_user }}'

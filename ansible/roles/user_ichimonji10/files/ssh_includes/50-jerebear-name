@@ -1,0 +1,10 @@
+Host amelanchier.jerebear.name
+    IdentityFile ~/.ssh/keys/amelanchier.jerebear.name
+
+Host aronia.jerebear.name
+    IdentityFile ~/.ssh/keys/aronia.jerebear.name
+
+Host pine.jerebear.name
+    IdentityFile ~/.ssh/keys/pine.jerebear.name
+
+# vim:ft=sshconfig:
