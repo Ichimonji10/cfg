@@ -5,6 +5,7 @@ Host aronia.jerebear.name
     IdentityFile ~/.ssh/keys/aronia.jerebear.name
 
 Host pine.jerebear.name
+    Hostname 192.168.1.245
     IdentityFile ~/.ssh/keys/pine.jerebear.name
 
 # vim:ft=sshconfig:
