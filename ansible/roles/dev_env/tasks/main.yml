@@ -10,8 +10,6 @@
         - gobject-introspection
         - heaptrack
         - jdk8-openjdk
-        - jq
-        - maven
         - npm
         - python-poetry
         - python-rst2pdf
@@ -37,6 +35,8 @@
         - git-crypt
         - graphviz
         - ipv6calc
+        - jq
+        - maven
         - mypy
         - namcap
         - pacman-contrib
