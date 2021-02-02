@@ -36,6 +36,7 @@
         - graphviz
         - ipv6calc
         - jq
+        - kubectl
         - maven
         - mypy
         - namcap
