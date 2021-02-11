@@ -49,6 +49,8 @@ repos:
     hooks:
       - id: shellcheck
         exclude: '^ansible/.*/templates'
+        # Work around https://github.com/jumanjihouse/pre-commit-hooks/issues/82
+        additional_dependencies: []
 
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.25.0
