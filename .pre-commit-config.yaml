@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/ansible/ansible-lint
-    rev: v4.3.7
+    rev: v5.0.0
     hooks:
       - id: ansible-lint
         args:
@@ -53,7 +53,7 @@ repos:
         additional_dependencies: []
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.25.0
+    rev: v1.26.0
     hooks:
       - id: yamllint
         args:
