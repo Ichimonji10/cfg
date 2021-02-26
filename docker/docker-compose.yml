@@ -19,6 +19,8 @@ services:
     secrets:
       - source: www.backtobasicsreading.com.key
         target: /etc/nginx/ssl/www.backtobasicsreading.com.key
+      - source: funkwhale.jerebear.name.key
+        target: /etc/nginx/ssl/funkwhale.jerebear.name.key
       - source: www.jerebear.name.key
         target: /etc/nginx/ssl/www.jerebear.name.key
 
@@ -27,5 +29,7 @@ secrets:
     file: ddns/update-ddns.sh
   www.backtobasicsreading.com.key:
     file: nginx/ssl-keys/www.backtobasicsreading.com.key
+  funkwhale.jerebear.name.key:
+    file: nginx/ssl-keys/funkwhale.jerebear.name.key
   www.jerebear.name.key:
     file: nginx/ssl-keys/www.jerebear.name.key
