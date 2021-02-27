@@ -34,17 +34,23 @@ services:
         source: funkwhale-frontend
         target: /frontend
         read_only: true
-      # regular imports; see MEDIA_ROOT in funkwhale.env
+      # Mounted at MEDIA_ROOT (see funkwhale.env) for copy imports.
       - &funkwhale_volume_media_root
         type: volume
         source: funkwhale-srv-funkwhale-data-media
         target: /srv/funkwhale/data/media
         read_only: true
-      # in-place imports; see MUSIC_DIRECTORY_PATH in funkwhale.env
-      - &funkwhale_volume_music_directory_path
+      # Mounted beneath MUSIC_DIRECTORY_PATH (see funkwhale.env) for in-place import.
+      - &funkwhale_volume_music_directory_path_audiobooks
+        type: bind
+        source: /home/ichimonji10/Audiobooks
+        target: /srv/funkwhale/data/music/Audiobooks
+        read_only: true
+      # Mounted beneath MUSIC_DIRECTORY_PATH (see funkwhale.env) for in-place import.
+      - &funkwhale_volume_music_directory_path_music
         type: bind
         source: /home/ichimonji10/Music
-        target: /srv/funkwhale/data/music
+        target: /srv/funkwhale/data/music/Music
         read_only: true
       - &funkwhale_volume_static_root
         type: volume
@@ -70,7 +76,8 @@ services:
         read_only: false
       - <<: *funkwhale_volume_media_root
         read_only: false
-      - *funkwhale_volume_music_directory_path
+      - *funkwhale_volume_music_directory_path_audiobooks
+      - *funkwhale_volume_music_directory_path_music
       - <<: *funkwhale_volume_static_root
         read_only: false
 
@@ -104,7 +111,8 @@ services:
     volumes:
       - <<: *funkwhale_volume_media_root
         read_only: false
-      - *funkwhale_volume_music_directory_path
+      - *funkwhale_volume_music_directory_path_audiobooks
+      - *funkwhale_volume_music_directory_path_music
 
   funkwhale-pg:
     environment:
