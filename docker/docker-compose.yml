@@ -29,6 +29,11 @@ services:
       - source: www.jerebear.name.key
         target: /etc/nginx/ssl/www.jerebear.name.key
     volumes:
+      - &funkwhale_volume_frontend
+        type: volume
+        source: funkwhale-frontend
+        target: /frontend
+        read_only: true
       # regular imports; see MEDIA_ROOT in funkwhale.env
       - &funkwhale_volume_media_root
         type: volume
@@ -46,11 +51,6 @@ services:
         source: funkwhale-srv-funkwhale-data-static
         target: /srv/funkwhale/data/static
         read_only: true
-      - &funkwhale_volume_frontend
-        type: volume
-        source: funkwhale-frontend
-        target: /frontend
-        read_only: true
 
   funkwhale-api:
     depends_on:
@@ -66,12 +66,12 @@ services:
       - target: '5000'
     restart: unless-stopped
     volumes:
+      - <<: *funkwhale_volume_frontend
+        read_only: false
       - <<: *funkwhale_volume_media_root
         read_only: false
       - *funkwhale_volume_music_directory_path
       - <<: *funkwhale_volume_static_root
-        read_only: false
-      - <<: *funkwhale_volume_frontend
         read_only: false
 
   funkwhale-celerybeat:
@@ -145,7 +145,7 @@ secrets:
 
 volumes:
   funkwhale-data:
+  funkwhale-frontend:
   funkwhale-srv-funkwhale-data-media:
   funkwhale-srv-funkwhale-data-static:
   funkwhale-var-lib-postgresql-data:
-  funkwhale-frontend:
