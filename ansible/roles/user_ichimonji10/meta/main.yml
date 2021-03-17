@@ -1,12 +1,9 @@
 ---
-# The dev_env role installs tools referenced by various config files.
 # The essential_apps role installs tools referenced by various config files.
 # The group_wheel role configures the "wheel" group.
 # The libvirtd role creates the libvirt group.
 # The workstation role creates the uucp group when installing picocom.
 dependencies:
-  - role: dev_env
-    when: "'workstations' in group_names"
   - role: essential_apps
   - role: group_wheel
   - role: dockerd

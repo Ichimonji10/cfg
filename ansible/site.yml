@@ -4,7 +4,6 @@
 - hosts: workstations
   roles:
     - borg_backup_users
-    - dev_env
     - net_nm
     - workstation
 

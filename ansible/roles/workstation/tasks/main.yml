@@ -11,31 +11,65 @@
   - name: Install applications
     pacman:
       name:
+        - ansible
         - calibre
+        - cmark
+        - ctags
         - cups
+        - devtools
         - discord
+        - docker-compose
+        - entr
         - exfat-utils
         - firefox
+        - git
+        - git-crypt
         - gptfdisk
+        - graphviz
         - hexchat
         - iperf3
+        - ipv6calc
+        - jq
+        - kubectl
         - lshw
         - lsof
+        - maven
+        - mypy
+        - namcap
         - noto-fonts
         - noto-fonts-cjk
         - noto-fonts-emoji
         - ntfs-3g
         - openssh
+        - pacman-contrib
         - picard
         - picocom
+        - postgresql-libs  # for iqe-tests
         - pulseaudio
+        - python-dnspython  # for ansible's dig lookup plugin
+        - python-docutils  # for rst2html
+        - python-passlib  # for ansible's htpasswd module
+        - python-pre-commit
+        - python-pylint
+        - python-sphinx
+        - python-wheel
+        - shellcheck
         - signal-desktop
         - sshfs
+        - sshpass  # optional for ansible
         - steam
+        - tigervnc
+        - tmate
+        - tmux
         - ttf-dejavu
+        - twine
         - unzip
+        - vim
+        - vim-nerdtree
+        - vim-tagbar
         - virt-manager
         - vlc
+        - wget
         - wireshark-qt
         - xclip
         - zip
@@ -54,15 +88,31 @@
         - gst-plugins-good
         - gstreamer
         - gstreamer-vaapi
+    notify: Set install reason for optional dependencies
 
   - name: Uninstall applications
     pacman:
       name:
+        - ansible-lint
+        - bandwidth
         - bluejeans
         - brother-hll2395dw
         - brscan4
+        - gobject-introspection
+        - heaptrack
+        - jdk8-openjdk
         - ms-sys
+        - npm
+        - python-poetry
+        - python-rst2pdf
+        - python36
+        - rust
+        - rust-docs
+        - sbt
+        - scala
         - signal-desktop-bin
+        - spin
+        - yamllint
       state: absent
 
   become: true
