@@ -53,4 +53,6 @@
 - include_tasks: ssh.yml
 - include_tasks: systemd.yml
   when: "'workstations' in group_names"
+- include_tasks: tmuxp.yml
+  when: "'workstations' in group_names"
 - include_tasks: vim.yml

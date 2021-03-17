@@ -61,6 +61,7 @@
         - tigervnc
         - tmate
         - tmux
+        - tmuxp
         - ttf-dejavu
         - twine
         - unzip

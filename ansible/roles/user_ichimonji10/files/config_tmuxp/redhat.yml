@@ -1,0 +1,36 @@
+session_name: redhat
+windows:
+  - window_name: vim
+    start_directory: ~/code/redhat
+    panes:
+      - sleep 0.5 && vim -o ~/Documents/source/redhat.rst ~/Documents/source/redhat/scratchpad.rst
+
+  - window_name: remediations
+    layout: even-vertical
+    start_directory: ~/code/redhat/iqe-remediations-plugin
+    panes:
+      - focus: true
+        shell_command:
+          - . ~/.venvs/iqe-remediations-plugin/bin/activate
+          - git status
+      - watch --color git hist --color
+
+  - window_name: rhc
+    layout: even-vertical
+    start_directory: ~/code/redhat/iqe-rhc-plugin
+    panes:
+      - focus: true
+        shell_command:
+          - . ~/.venvs/iqe-rhc-plugin/bin/activate
+          - git status
+      - watch --color git hist --color
+
+  - window_name: config manager
+    layout: even-vertical
+    start_directory: ~/code/redhat/config-manager
+    panes:
+      - focus: true
+        shell_command:
+          - git status
+          - docker-compose ps
+      - watch --color git hist --color
