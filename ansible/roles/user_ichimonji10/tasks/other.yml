@@ -1,0 +1,8 @@
+---
+- name: Create symlink to 7DaysToDie game data
+  ansible.builtin.file:
+    src: '{{ user_ichimonji10_home }}/Documents/unintegrated/video-games/7DaysToDie'
+    dest: '{{ user_ichimonji10_home }}/.local/share/7DaysToDie'
+    state: link
+  become: true
+  become_user: ichimonji10
