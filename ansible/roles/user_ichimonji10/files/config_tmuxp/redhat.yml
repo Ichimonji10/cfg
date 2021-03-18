@@ -3,7 +3,7 @@ windows:
   - window_name: vim
     start_directory: ~/code/redhat
     panes:
-      - sleep 0.5 && vim -o ~/Documents/source/redhat.rst ~/Documents/source/redhat/scratchpad.rst
+      - sleep 1 && vim -o ~/Documents/source/redhat.rst ~/Documents/source/redhat/scratchpad.rst
 
   - window_name: remediations
     layout: even-vertical
