@@ -19,12 +19,6 @@ The Compose file in this repository gives services names that differ from are sh
 `Funkwhale Compose file`_, so containers require some additional configuration.  To get a high-level
 understanding of how the services fit together, see the `Funkwhale architecture`_ diagram.
 
-After installation, make sure to do the following:
-
-#.  Set a contact email.
-#.  Import music. (This can be done in the web UI.)
-#.  Adjust upload limits.
-
 If files are moved or removed, consider running `management commands`_ and then re-importing the
 relevant library. The most relevant management commands are as follows:
 
@@ -40,7 +34,7 @@ relevant library. The most relevant management commands are as follows:
     # For each track, album, or artist object in the database, if the corresponding file(s) is
     # absent, delete that database object.
     #
-    # This command doesn't check to see if the corresponding file(s) are absent. The
+    # This command doesn't check to see if the corresponding file(s) have moved. The
     # `check_inplace_files` command does this.
     docker-compose run --rm funkwhale-api python manage.py prune_library --tracks --albums --artists
 
