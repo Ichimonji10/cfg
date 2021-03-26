@@ -2,7 +2,11 @@
 # https://www.gnu.org/software/make/manual/make.html#Pattern-Rules
 
 .PHONY: chained-certs
-chained-certs: www.backtobasicsreading.com.chained.crt funkwhale.jerebear.name.chained.crt www.jerebear.name.chained.crt
+chained-certs: \
+	funkwhale.jerebear.name.chained.crt \
+	transmission.jerebear.name.chained.crt \
+	www.jerebear.name.chained.crt \
+	www.backtobasicsreading.com.chained.crt
 
 %.chained.crt: %.crt GandiStandardSSLCA2.pem
 	cat $^ > $@

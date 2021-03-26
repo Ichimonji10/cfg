@@ -13,10 +13,13 @@ services:
   nginx:
     image: jaudet/nginx
     build: nginx
+    # So that upstream declarations will work.
     depends_on:
       - funkwhale-api
+      - transmission
     networks:
       - funkwhale
+      - transmission
     ports:
       - '80:80'
       - '443:443'
@@ -26,6 +29,10 @@ services:
         target: /etc/nginx/ssl/www.backtobasicsreading.com.key
       - source: funkwhale.jerebear.name.key
         target: /etc/nginx/ssl/funkwhale.jerebear.name.key
+      - source: transmission.jerebear.name.htpasswd
+        target: /etc/nginx/transmission.jerebear.name.htpasswd
+      - source: transmission.jerebear.name.key
+        target: /etc/nginx/ssl/transmission.jerebear.name.key
       - source: www.jerebear.name.key
         target: /etc/nginx/ssl/www.jerebear.name.key
     volumes:
@@ -57,6 +64,28 @@ services:
         source: funkwhale-srv-funkwhale-data-static
         target: /srv/funkwhale/data/static
         read_only: true
+      - type: volume
+        source: transmission-srv-torrents
+        target: /srv/torrents
+        read_only: true
+
+  transmission:
+    environment:
+      - TZ=America/New_York  # image readme recommends setting this
+    image: ghcr.io/linuxserver/transmission
+    networks:
+      - transmission
+    ports:
+      - '51413:51413'  # transmission
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: transmission-config
+        target: /config
+      - type: volume
+        source: transmission-srv-torrents
+        target: /downloads
+        read_only: false
 
   funkwhale-api:
     depends_on:
@@ -140,6 +169,7 @@ services:
 
 networks:
   funkwhale:
+  transmission:
 
 secrets:
   update-ddns.sh:
@@ -148,6 +178,10 @@ secrets:
     file: nginx/ssl-keys/www.backtobasicsreading.com.key
   funkwhale.jerebear.name.key:
     file: nginx/ssl-keys/funkwhale.jerebear.name.key
+  transmission.jerebear.name.htpasswd:
+    file: nginx/secrets/etc-nginx/transmission.jerebear.name.htpasswd
+  transmission.jerebear.name.key:
+    file: nginx/ssl-keys/transmission.jerebear.name.key
   www.jerebear.name.key:
     file: nginx/ssl-keys/www.jerebear.name.key
 
@@ -157,3 +191,5 @@ volumes:
   funkwhale-srv-funkwhale-data-media:
   funkwhale-srv-funkwhale-data-static:
   funkwhale-var-lib-postgresql-data:
+  transmission-config:  # persistent data, like settings file, torrent list, and block list
+  transmission-srv-torrents:
