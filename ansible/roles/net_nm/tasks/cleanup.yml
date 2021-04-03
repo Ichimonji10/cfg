@@ -1,0 +1,6 @@
+---
+- name: Uninstall dnsmasq
+  pacman:
+    name: dnsmasq
+    state: absent
+  become: true

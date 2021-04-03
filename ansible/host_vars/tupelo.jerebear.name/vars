@@ -1,6 +1,4 @@
 ---
-net_nm_has_gui: true
-
 syncthing_usernames:
   - ichimonji10
 

@@ -1,4 +1,4 @@
 ---
-- name: Reload NetworkManager connections
-  command: nmcli connection reload
+- name: Reload NetworkManager
+  command: nmcli general reload
   become: true

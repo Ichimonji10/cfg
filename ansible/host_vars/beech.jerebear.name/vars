@@ -13,8 +13,6 @@ btrfs_subvolumes:
   - path: '{{ btrfs_paths[0] }}/home-ichimonji10-Pictures'
   - path: '{{ btrfs_paths[0] }}/home-ichimonji10-TV\x20Shows'
 
-net_nm_has_gui: true
-
 syncthing_usernames:
   - ichimonji10
 

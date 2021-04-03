@@ -3,16 +3,8 @@ net_nm
 
 Manage networking with NetworkManager and related tools.
 
-Variables
----------
-
-``net_nm_has_gui``
-    Whether the target host has a GUI or not. If so, additional applications or services may be
-    installed and configured.
-
-``net_nm_install``
-    Whether this role should install and configure applications and services, or uninstall and
-    delete configuration files.
+This role is designed for workstations. If this role is to be used on a server, then the
+installation of ``networkmanager-openvpn`` should be made optional.
 
 EXTRA SHIT
 ----------
