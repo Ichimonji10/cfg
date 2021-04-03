@@ -3,9 +3,5 @@ net_sd
 
 Manage networking with systemd and related tools.
 
-Variables
----------
-
-``net_sd_install``
-    Whether this role should install and configure applications and services, or uninstall and
-    delete configuration files.
+This role is designed for servers. If this role is to be used on a workstation, then you're going to
+have an unhappy time managing configuration files.
