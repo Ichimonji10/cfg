@@ -1,6 +1,8 @@
 ---
-- name: Uninstall dnsmasq
+- name: Uninstall formerly necessary packages
   pacman:
-    name: dnsmasq
+    name:
+      - dnsmasq
+      - openresolv
     state: absent
   become: true
