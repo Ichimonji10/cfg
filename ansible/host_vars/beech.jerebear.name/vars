@@ -11,7 +11,7 @@ btrfs_subvolumes:
   - path: '{{ btrfs_paths[0] }}/home-ichimonji10-Music'
   - path: '{{ btrfs_paths[0] }}/home-ichimonji10-OSs'
   - path: '{{ btrfs_paths[0] }}/home-ichimonji10-Pictures'
-  - path: '{{ btrfs_paths[0] }}/home-ichimonji10-TV\x20Shows'
+  - path: '{{ btrfs_paths[0] }}/home-ichimonji10-Shows'
 
 syncthing_usernames:
   - ichimonji10
