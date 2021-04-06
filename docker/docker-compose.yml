@@ -94,7 +94,7 @@ services:
     env_file:
       - &public_funkwhale_env_file ./nginx/other-public/funkwhale.env
       - &private_funkwhale_env_file ./nginx/other-private/funkwhale.env
-    image: &funkwhale-image funkwhale/funkwhale:1.0.1
+    image: &funkwhale-image funkwhale/funkwhale:1.1
     networks:
       - funkwhale
     ports:
