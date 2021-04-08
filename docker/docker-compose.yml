@@ -69,9 +69,11 @@ services:
         target: /srv/torrents
         read_only: true
 
+  # TODO: Set net_mode for this service, and figure out port forwarding from jaudet/nginx to this
+  # service.
   transmission:
     environment:
-      - TZ=America/New_York  # image readme recommends setting this
+      - TZ=America/New_York
     image: ghcr.io/linuxserver/transmission
     networks:
       - transmission
@@ -86,6 +88,25 @@ services:
         source: transmission-srv-torrents
         target: /downloads
         read_only: false
+
+  # TODO: FIgure out if SYS_MODULE and /lib/modules are required.
+  wireguard:
+    # volumes:
+    #   - type: volume
+    #     source: /lib/modules
+    #     target: /lib/modules
+    image: ghcr.io/linuxserver/wireguard
+    cap_add:
+      - NET_ADMIN
+      # - SYS_MODULE
+    environment:
+      - TZ=America/New_York
+    restart: unless-stopped
+    secrets:
+      - source: wg0.conf
+        target: /config/wg0.conf
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
 
   funkwhale-api:
     depends_on:
@@ -174,6 +195,8 @@ networks:
 secrets:
   update-ddns.sh:
     file: ddns/mount/update-ddns.sh
+  wg0.conf:
+    file: wireguard/mount/wg0.conf
   www.backtobasicsreading.com.key:
     file: nginx/mount/etc-nginx-ssl/www.backtobasicsreading.com.key
   funkwhale.jerebear.name.key:
