@@ -16,10 +16,10 @@ services:
     # So that upstream declarations will work.
     depends_on:
       - funkwhale-api
-      - transmission
+      - wireguard
     networks:
       - funkwhale
-      - transmission
+      - wireguard
     ports:
       - '80:80'
       - '443:443'
@@ -69,16 +69,13 @@ services:
         target: /srv/torrents
         read_only: true
 
-  # TODO: Set net_mode for this service, and figure out port forwarding from jaudet/nginx to this
-  # service.
   transmission:
+    image: ghcr.io/linuxserver/transmission
+    depends_on:
+      - wireguard
     environment:
       - TZ=America/New_York
-    image: ghcr.io/linuxserver/transmission
-    networks:
-      - transmission
-    ports:
-      - '51413:51413'  # transmission
+    network_mode: "service:wireguard"
     restart: unless-stopped
     volumes:
       - type: volume
@@ -89,18 +86,16 @@ services:
         target: /downloads
         read_only: false
 
-  # TODO: FIgure out if SYS_MODULE and /lib/modules are required.
+  # If a kernel module is missing, add the SYS_MODULE capacity and mount /lib/modules from host to
+  # container. (This is recommended by the image readme.)
   wireguard:
-    # volumes:
-    #   - type: volume
-    #     source: /lib/modules
-    #     target: /lib/modules
     image: ghcr.io/linuxserver/wireguard
     cap_add:
       - NET_ADMIN
-      # - SYS_MODULE
     environment:
       - TZ=America/New_York
+    networks:
+      - wireguard  # So nginx can proxy to transmission.
     restart: unless-stopped
     secrets:
       - source: wg0.conf
@@ -190,7 +185,7 @@ services:
 
 networks:
   funkwhale:
-  transmission:
+  wireguard:
 
 secrets:
   update-ddns.sh:
