@@ -92,8 +92,8 @@ services:
       - funkwhale-pg
       - funkwhale-redis
     env_file:
-      - &public_funkwhale_env_file ./nginx/other-public/funkwhale.env
-      - &private_funkwhale_env_file ./nginx/other-private/funkwhale.env
+      - &public_funkwhale_env_file ./docker-compose/public/funkwhale.env
+      - &private_funkwhale_env_file ./docker-compose/private/funkwhale.env
     image: &funkwhale-image funkwhale/funkwhale:1.1
     networks:
       - funkwhale
@@ -173,17 +173,17 @@ networks:
 
 secrets:
   update-ddns.sh:
-    file: ddns/copy-private/update-ddns.sh
+    file: ddns/mount/update-ddns.sh
   www.backtobasicsreading.com.key:
-    file: nginx/copy-private/etc-nginx-ssl/www.backtobasicsreading.com.key
+    file: nginx/mount/etc-nginx-ssl/www.backtobasicsreading.com.key
   funkwhale.jerebear.name.key:
-    file: nginx/copy-private/etc-nginx-ssl/funkwhale.jerebear.name.key
+    file: nginx/mount/etc-nginx-ssl/funkwhale.jerebear.name.key
   transmission.jerebear.name.htpasswd:
-    file: nginx/copy-private/etc-nginx/transmission.jerebear.name.htpasswd
+    file: nginx/mount/etc-nginx/transmission.jerebear.name.htpasswd
   transmission.jerebear.name.key:
-    file: nginx/copy-private/etc-nginx-ssl/transmission.jerebear.name.key
+    file: nginx/mount/etc-nginx-ssl/transmission.jerebear.name.key
   www.jerebear.name.key:
-    file: nginx/copy-private/etc-nginx-ssl/www.jerebear.name.key
+    file: nginx/mount/etc-nginx-ssl/www.jerebear.name.key
 
 volumes:
   funkwhale-data:

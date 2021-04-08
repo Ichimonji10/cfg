@@ -7,4 +7,4 @@ USER root
 RUN ["apk", "add", "--no-cache", "bash", "curl"]
 USER $USERID
 
-COPY --chown=$USERID ["copy-public/jobber", "/home/jobberuser/.jobber"]
+COPY --chown=$USERID ["copy/jobber", "/home/jobberuser/.jobber"]

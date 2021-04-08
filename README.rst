@@ -3,6 +3,23 @@ cfg
 
 Configuration management code for my personal hosts.
 
+Docker Layout
+-------------
+
+If a file is copied into a service while its backing image is being built, or if a file is mounted
+into a service while it's running, then it should go into a subdirectory named after that service.
+Recommended subdirectory names include:
+
+*   copy
+*   mount
+*   compile
+
+If a file isn't used by a service in this manner, it should go into the ``docker-compose``
+directory.
+
+This policy will prove problematic if a service named ``docker-compose`` is to be created, and no
+solution for this possibility is provided at this time.
+
 Funkwhale
 ---------
 

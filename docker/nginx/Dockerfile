@@ -1,10 +1,10 @@
 FROM gcc
-COPY ["compile-public", "."]
+COPY ["compile", "."]
 RUN ["make"]
 
 FROM nginx:alpine
 LABEL maintainer="jerebear@protonmail.com"
-COPY ["copy-public/etc-nginx", "/etc/nginx/"]
-COPY ["copy-public/etc-nginx-conf.d", "/etc/nginx/conf.d/"]
-COPY ["copy-public/usr-share-nginx", "/usr/share/nginx/"]
+COPY ["copy/etc-nginx", "/etc/nginx/"]
+COPY ["copy/etc-nginx-conf.d", "/etc/nginx/conf.d/"]
+COPY ["copy/usr-share-nginx", "/usr/share/nginx/"]
 COPY --from=0 ["*.chained.crt", "/etc/nginx/ssl/"]
