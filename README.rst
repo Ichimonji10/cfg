@@ -25,7 +25,7 @@ Funkwhale
 
 To summarize the `Funkwhale multi-container installation`_ procedure:
 
-.. code:: bash
+.. code:: sh
 
     docker-compose up --detach funkwhale-pg
     docker-compose run --rm funkwhale-api python manage.py migrate
@@ -39,7 +39,7 @@ understanding of how the services fit together, see the `Funkwhale architecture`
 If files are moved or removed, consider running `management commands`_ and then re-importing the
 relevant library. The most relevant management commands are as follows:
 
-.. code:: bash
+.. code:: sh
 
     # For each "track" object in the database, update or delete that object's reference to the
     # on-disk file.
@@ -61,7 +61,7 @@ Transmission
 For some reason, Transmission doesn't write ``peer-port`` to ``settings.json`` upon shutdown. To set
 this value:
 
-.. code:: bash
+.. code:: sh
 
     docker-compose stop transmission
     docker run -it --rm --mount source=docker_transmission-config,target=/mnt/config alpine /bin/sh
@@ -69,7 +69,7 @@ this value:
 
 And in the container:
 
-.. code:: bash
+.. code:: sh
 
     apk add jq
     echo "$(jq '."peer-port" = 58340' /mnt/config/settings.json)" > /mnt/config/settings.json
