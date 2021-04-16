@@ -55,6 +55,26 @@ relevant library. The most relevant management commands are as follows:
     # `check_inplace_files` command does this.
     docker-compose run --rm funkwhale-api python manage.py prune_library --tracks --albums --artists
 
+Transmission
+------------
+
+For some reason, Transmission doesn't write ``peer-port`` to ``settings.json`` upon shutdown. To set
+this value:
+
+.. code:: bash
+
+    docker-compose stop transmission
+    docker run -it --rm --mount source=docker_transmission-config,target=/mnt/config alpine /bin/sh
+    docker-compose start transmission
+
+And in the container:
+
+.. code:: bash
+
+    apk add jq
+    echo "$(jq '."peer-port" = 58340' /mnt/config/settings.json)" > /mnt/config/settings.json
+    jq '."peer-port"' < /mnt/config/settings.json
+
 .. _funkwhale architecture: https://docs.funkwhale.audio/developers/architecture.html
 .. _funkwhale compose file: https://dev.funkwhale.audio/funkwhale/funkwhale/-/blob/develop/deploy/docker-compose.yml
 .. _funkwhale multi-container installation: https://docs.funkwhale.audio/installation/docker.html#docker-multi-container
