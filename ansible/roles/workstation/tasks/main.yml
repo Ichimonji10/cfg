@@ -33,6 +33,7 @@
         - kubectl
         - lshw
         - lsof
+        - man-pages
         - maven
         - mypy
         - namcap
