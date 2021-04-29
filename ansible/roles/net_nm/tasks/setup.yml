@@ -26,11 +26,14 @@
       - systemd-resolved.service
       - NetworkManager.service
 
-  - name: Install RDU2 OpenVPN connection profile
+  - name: Install OpenVPN connection profiles
     copy:
-      src: RDU2.ovpn
+      src: '{{ item }}'
       dest: /etc/NetworkManager/system-connections/
       mode: 0600
     notify: Reload NetworkManager
+    loop:
+      - PHX2.ovpn
+      - RDU2.ovpn
 
   become: true
