@@ -25,6 +25,16 @@ windows:
           - git status
       - watch --color git hist --color
 
+  - window_name: e2e
+    layout: even-vertical
+    start_directory: ~/code/redhat/iqe-e2e-plugin
+    panes:
+      - focus: true
+        shell_command:
+          - . ~/.venvs/iqe-e2e-plugin/bin/activate
+          - git status
+      - watch --color git hist --color
+
   - window_name: config manager
     layout: even-vertical
     start_directory: ~/code/redhat/config-manager
