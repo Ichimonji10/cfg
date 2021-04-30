@@ -3,9 +3,7 @@ windows:
   - window_name: vim
     start_directory: ~/code/redhat
     panes:
-      - >-
-        while [[ "$(stty size)" == "600 800" ]]; do sleep 0.1; done;
-        vim -o ~/Documents/source/redhat.rst ~/Documents/source/redhat/scratchpad.rst
+      - vim ~/Documents/source/redhat/scratchpad.rst
 
   - window_name: remediations
     layout: even-vertical
