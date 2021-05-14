@@ -16,7 +16,6 @@
 
 - hosts: all
   roles:
-    - crda
     - essential_apps
     - lm_sensors
     - locale
