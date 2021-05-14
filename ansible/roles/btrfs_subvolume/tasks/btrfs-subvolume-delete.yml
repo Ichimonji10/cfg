@@ -1,8 +1,0 @@
----
-- name: Start and enable btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
-  systemd:
-    name: btrfs-subvolume-delete@{{ btrfs_subvolume.escaped_path }}.timer
-    state: started
-    enabled: true
-    daemon_reload: true
-  become: true

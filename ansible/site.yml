@@ -31,12 +31,6 @@
   roles:
     - apcupsd
 
-- hosts: btrfs_hosts
-  roles:
-    - btrfs_balance
-    - btrfs_scrub
-    - btrfs_subvolume
-
 - hosts: coreboot_hosts
   roles:
     - coreboot

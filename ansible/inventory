@@ -19,12 +19,6 @@ aronia.jerebear.name
 beech.jerebear.name
 pine.jerebear.name
 
-# These systems have BTRFS filesystems, and therefore require special periodic checks like
-# filesystem scrubs.
-[btrfs_hosts]
-beech.jerebear.name
-pine.jerebear.name
-
 # Each of these systems uses coreboot.
 [coreboot_hosts]
 amelanchier.jerebear.name
