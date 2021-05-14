@@ -21,7 +21,6 @@
     - nft
     - pacman_conf
     - smartd
-    - ucode
     - user_ichimonji10
 
 - hosts: apc_hosts
