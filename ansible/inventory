@@ -30,12 +30,6 @@ beech.jerebear.name
 pine.jerebear.name
 tupelo.jerebear.name
 
-# Each of these systems has a UEFI BIOS.
-[uefi_hosts]
-beech.jerebear.name
-pine.jerebear.name
-tupelo.jerebear.name
-
 # These systems host qemu-kvm VMs.
 [vm_hosts]
 beech.jerebear.name

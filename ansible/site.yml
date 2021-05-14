@@ -35,11 +35,6 @@
   roles:
     - syncthing
 
-# Requisite package is unavailable
-# - hosts: uefi_hosts
-#   roles:
-#     - uefi
-
 - hosts: vm_hosts
   roles:
     - dockerd
