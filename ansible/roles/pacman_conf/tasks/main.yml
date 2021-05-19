@@ -17,7 +17,8 @@
   # If pacman is configured to use a repository but has never synced it, then
   # commands like `pacman -S foo` will fail. This is true even when "foo" comes
   # from a repository that pacman has already synced.
-  - meta: flush_handlers
+  - name: Flush handlers
+    meta: flush_handlers
 
   - name: Install reflector
     pacman:
