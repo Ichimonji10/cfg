@@ -1,0 +1,27 @@
+session_name: presentation
+windows:
+  - window_name: notes
+    panes:
+      - vim ~/Documents/source/redhat/tasks/presentation.rst
+
+  - window_name: mnt-cnt-vol
+    start_directory: ~/code/impedimenta/docker/bind-mount-volume/
+    panes:
+      - tree
+
+  - window_name: mnt-unshare
+    start_directory: ~/code/impedimenta/docker/bind-mount-unshare/
+    panes:
+      - tree
+      - tree
+
+  - window_name: pid-vis
+    panes:
+      -
+      -
+
+  - window_name: net-ns
+    start_directory: ~/code/impedimenta/docker/ovpn-demo
+    panes:
+      - ls -1
+      - ls -1
