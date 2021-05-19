@@ -6,7 +6,7 @@ AssertPathExists={{ user_ichimonji10_home }}/Documents/source
 [Service]
 Type=simple
 WorkingDirectory={{ user_ichimonji10_home }}/Documents
-ExecStart=/usr/bin/bash -c 'find source -type f | entr -d make html'
+ExecStart=/usr/bin/bash -c 'find source -type f | entr -nd make html'
 NoNewPrivileges=true
 
 # From entr(1), an exit code of 2 means: A file was added to a directory and the
