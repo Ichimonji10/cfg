@@ -7,7 +7,7 @@
 
 - name: Set a variable referencing the user's ID
   set_fact:
-    borg_backup_user_id: '{{ getent_passwd[borg_backup_user.local_user][1] }}'
+    borg_backup_uid: '{{ getent_passwd[borg_backup_user.local_user][1] }}'
 
 - name: Set a variable referencing the user's home directory
   set_fact:
@@ -15,6 +15,8 @@
 
 - block:
 
+    # TODO: Create a role specifically for SSH key management. Pull logic from roles
+    # borg_backup_users and user_ichimonji10. Let this role depend on that role.
     - name: Create directories in the user's home directory
       file:
         path: '{{ borg_backup_user_home }}/{{ item }}'
@@ -67,7 +69,7 @@
         scope: user
         daemon_reload: true
       environment:
-        XDG_RUNTIME_DIR: /run/user/{{ borg_backup_user_id }}
+        XDG_RUNTIME_DIR: /run/user/{{ borg_backup_uid }}
 
     - name: Delete outdated files
       file:
