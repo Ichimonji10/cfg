@@ -23,8 +23,6 @@
       content: '{{ ssh_keypairs[item]["ichimonji10"]["private"] }}'
       mode: 0600
     loop:
-      - amelanchier.jerebear.name
-      - aronia.jerebear.name
       - pine.jerebear.name
     when: "'workstations' in group_names"
 

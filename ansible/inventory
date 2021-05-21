@@ -7,22 +7,14 @@ tupelo.jerebear.name
 
 # These systems are headless, have high uptime, and have remote management capabilities.
 [servers]
-amelanchier.jerebear.name
-aronia.jerebear.name
 pine.jerebear.name
 
 # other ############################################################################################
 
 # Each of these systems has an APC brand UPS attached.
 [apc_hosts]
-aronia.jerebear.name
 beech.jerebear.name
 pine.jerebear.name
-
-# Each of these systems uses coreboot.
-[coreboot_hosts]
-amelanchier.jerebear.name
-aronia.jerebear.name
 
 # These systems sync files with syncthing.
 [syncthing_hosts]

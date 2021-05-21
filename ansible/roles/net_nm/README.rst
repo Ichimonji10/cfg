@@ -51,7 +51,6 @@ Possible target hosts:
 
 *   pine (no dnsmasq, no networkmanager-openvpn)
 *   beech and tupelo (yes dnsmasq, yes networkmanager-openvpn)
-*   amelanchier and aronia (separate role)
 
 In separate role:
 
