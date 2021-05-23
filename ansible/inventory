@@ -15,9 +15,3 @@ pine.jerebear.name
 [apc_hosts]
 beech.jerebear.name
 pine.jerebear.name
-
-# These systems host qemu-kvm VMs.
-[vm_hosts]
-beech.jerebear.name
-pine.jerebear.name
-tupelo.jerebear.name

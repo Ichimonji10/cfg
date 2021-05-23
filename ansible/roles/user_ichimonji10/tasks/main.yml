@@ -16,7 +16,6 @@
   loop:
     - docker
     - libvirt
-  when: "'vm_hosts' in group_names"
 
 - name: Append "uucp" and "wireshark" to the list of groups
   set_fact:

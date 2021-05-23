@@ -16,7 +16,9 @@
 
 - hosts: all
   roles:
+    - dockerd
     - essential_apps
+    - libvirtd
     - lm_sensors
     - nft
     - smartd
@@ -26,8 +28,3 @@
 - hosts: apc_hosts
   roles:
     - apcupsd
-
-- hosts: vm_hosts
-  roles:
-    - dockerd
-    - libvirtd
