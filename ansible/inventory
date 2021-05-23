@@ -16,12 +16,6 @@ pine.jerebear.name
 beech.jerebear.name
 pine.jerebear.name
 
-# These systems sync files with syncthing.
-[syncthing_hosts]
-beech.jerebear.name
-pine.jerebear.name
-tupelo.jerebear.name
-
 # These systems host qemu-kvm VMs.
 [vm_hosts]
 beech.jerebear.name

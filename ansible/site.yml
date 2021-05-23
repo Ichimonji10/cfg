@@ -20,6 +20,7 @@
     - lm_sensors
     - nft
     - smartd
+    - syncthing
     - user_ichimonji10
 
 - hosts: apc_hosts
@@ -29,10 +30,6 @@
 - hosts: coreboot_hosts
   roles:
     - coreboot
-
-- hosts: syncthing_hosts
-  roles:
-    - syncthing
 
 - hosts: vm_hosts
   roles:
