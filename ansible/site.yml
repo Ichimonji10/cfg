@@ -27,10 +27,6 @@
   roles:
     - apcupsd
 
-- hosts: coreboot_hosts
-  roles:
-    - coreboot
-
 - hosts: vm_hosts
   roles:
     - dockerd
