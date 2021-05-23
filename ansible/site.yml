@@ -1,19 +1,4 @@
 ---
-# workstations & servers ###########################################################################
-
-- hosts: workstations
-  roles:
-    - borg_backup_users
-    - net_nm
-    - workstation
-
-- hosts: servers
-  roles:
-    - net_sd  # could use net_nm, for sake of homogeneity?
-    - sshd
-
-# other ############################################################################################
-
 - hosts: all
   roles:
     - dockerd
@@ -28,3 +13,14 @@
 - hosts: apc_hosts
   roles:
     - apcupsd
+
+- hosts: servers
+  roles:
+    - net_sd  # could use net_nm, for sake of homogeneity?
+    - sshd
+
+- hosts: workstations
+  roles:
+    - borg_backup_users
+    - net_nm
+    - workstation

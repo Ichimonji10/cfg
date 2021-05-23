@@ -1,17 +1,13 @@
-# workstations & servers ###########################################################################
-
-# These systems have GUIs, limited uptime, and no remote management capabilities.
-[workstations]
+# Each of these systems has an APC brand UPS attached.
+[apc_hosts]
 beech.jerebear.name
-tupelo.jerebear.name
+pine.jerebear.name
 
 # These systems are headless, have high uptime, and have remote management capabilities.
 [servers]
 pine.jerebear.name
 
-# other ############################################################################################
-
-# Each of these systems has an APC brand UPS attached.
-[apc_hosts]
+# These systems have GUIs, limited uptime, and no remote management capabilities.
+[workstations]
 beech.jerebear.name
-pine.jerebear.name
+tupelo.jerebear.name
