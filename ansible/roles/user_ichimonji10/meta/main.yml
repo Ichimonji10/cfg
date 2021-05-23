@@ -1,9 +1,7 @@
 ---
-# The essential_apps role installs tools referenced by various config files.
 # The libvirtd role creates the libvirt group.
 # The workstation role creates the uucp group when installing picocom.
 dependencies:
-  - role: essential_apps
   - role: dockerd
   - role: libvirtd
   - role: workstation
