@@ -15,11 +15,9 @@
 
 - hosts: servers
   roles:
-    - net_sd  # could use net_nm, for sake of homogeneity?
     - sshd
 
 - hosts: workstations
   roles:
     - borg_backup_users
-    - net_nm
     - workstation
