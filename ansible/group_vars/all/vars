@@ -12,6 +12,4 @@ borg_backup_users:
 
 ssh_keypairs: '{{ vault_ssh_keypairs }}'
 
-workstation_rh_it_root_ca_crt: '{{ workstation_rh_it_root_ca_crt_vault }}'
-
 # vim:ft=yaml:
