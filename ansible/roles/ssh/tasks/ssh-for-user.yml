@@ -1,0 +1,46 @@
+---
+- block:
+
+  - debug:
+      var: ssh_user
+
+  - name: Get passwd information about user
+    getent:
+      database: passwd
+      key: '{{ ssh_user.key }}'
+      split: ':'
+
+  - name: Set variable referencing user's home directory
+    set_fact:
+      ssh_user_home: '{{ getent_passwd[ssh_user.key][4] }}'
+
+  - name: Install ~/.ssh/config
+    copy:
+      src: '{{ ssh_user.key }}/config'
+      dest: '{{ ssh_user_home }}/.ssh/config'
+      mode: 0600
+
+  - name: Create ~/.ssh/ subdirectories
+    file:
+      path: '{{ ssh_user_home }}/.ssh/{{ item }}'
+      state: directory
+      mode: 0700
+    loop:
+      - includes
+      - keys
+
+  - name: Install ~/.ssh/includes/*
+    copy:
+      src: '{{ ssh_user.key }}/includes/'
+      dest: '{{ ssh_user_home }}/.ssh/includes/'
+      mode: 0600
+
+  - name: Install ~/.ssh/keys/* (i.e. private keys)
+    copy:
+      dest: '{{ ssh_user_home }}/.ssh/keys/{{ item.key }}'
+      content: '{{ item.value }}'
+      mode: 0600
+    loop: '{{ ssh_user.value.privkeys | dict2items }}'
+
+  become: true
+  become_user: '{{ ssh_user.key }}'

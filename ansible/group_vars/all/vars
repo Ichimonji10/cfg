@@ -10,6 +10,8 @@ borg_backup_users:
     remote_host: usw-s001.rsync.net
     remote_user: 1025
 
-ssh_keypairs: '{{ vault_ssh_keypairs }}'
+ssh_users:
+  jaudet:
+    privkeys: '{{ vault_ssh_users_jaudet_privkeys }}'
 
 # vim:ft=yaml:

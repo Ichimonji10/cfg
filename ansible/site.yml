@@ -20,4 +20,5 @@
 - hosts: workstations
   roles:
     - borg_backup_users
+    - ssh
     - workstation
