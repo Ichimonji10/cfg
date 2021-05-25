@@ -41,6 +41,7 @@
     loop:
       - com.calibre_ebook.calibre
       - com.discordapp.Discord
+      - com.slack.Slack
       - com.valvesoftware.Steam
       - org.gimp.GIMP
       - org.musicbrainz.Picard
