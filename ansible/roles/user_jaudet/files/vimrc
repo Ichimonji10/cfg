@@ -102,9 +102,6 @@ set backspace=2
 set scrolloff=5
 " Use syntax highlighting.
 syntax enable
-{% if 'workstations' in group_names %}
-color badwolf
-{% endif %}
 " Display interesting characters, such as trailing whitespace, specially.
 set list
 set listchars=trail:·,tab:┼─,extends:→

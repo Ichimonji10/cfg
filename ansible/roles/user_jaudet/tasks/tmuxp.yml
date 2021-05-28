@@ -1,0 +1,8 @@
+---
+- name: Create and populate ~/.config/tmuxp/
+  copy:
+    src: config_tmuxp/
+    dest: '{{ user_jaudet_home }}/.config/tmuxp/'
+    mode: 0700
+  become: true
+  become_user: jaudet

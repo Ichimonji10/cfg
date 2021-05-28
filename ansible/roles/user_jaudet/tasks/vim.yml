@@ -1,0 +1,21 @@
+---
+- block:
+
+  - name: Create directories named by ~/.vimrc
+    file:
+      path: "{{ item }}"
+      state: directory
+      mode: 0700
+    loop:
+      - "{{ user_jaudet_home }}/.cache/custom-ctags"
+      - "{{ user_jaudet_home }}/.vim/undo"
+      - "{{ user_jaudet_home }}/code"
+
+  - name: Install ~/.vimrc
+    copy:
+      src: vimrc
+      dest: "{{ user_jaudet_home }}/.vimrc"
+      mode: 0600
+
+  become: true
+  become_user: jaudet

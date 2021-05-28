@@ -1,8 +1,0 @@
----
-# The libvirtd role creates the libvirt group.
-# The workstation role creates the uucp group when installing picocom.
-dependencies:
-  - role: dockerd
-  - role: libvirtd
-  - role: workstation
-    when: "'workstations' in group_names"

@@ -1,0 +1,16 @@
+---
+- block:
+
+  - name: Install ~/.pypirc (for twine)
+    copy:
+      src: pypirc
+      dest: '{{ user_jaudet_home }}/.pypirc'
+      mode: 0600
+
+  - name: Create and populate ~/.config/pip/
+    copy:
+      src: config_pip/
+      dest: '{{ user_jaudet_home }}/.config/pip/'
+
+  become: true
+  become_user: jaudet

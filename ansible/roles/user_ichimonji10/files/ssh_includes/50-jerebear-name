@@ -1,5 +1,0 @@
-Host pine.jerebear.name
-    Hostname 192.168.1.245
-    IdentityFile ~/.ssh/keys/pine.jerebear.name
-
-# vim:ft=sshconfig:
