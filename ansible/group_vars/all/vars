@@ -10,6 +10,9 @@ borg_backup_users:
     remote_host: usw-s001.rsync.net
     remote_user: 1025
 
+docker_users:
+  - jaudet
+
 ssh_users:
   jaudet:
     privkeys: '{{ vault_ssh_users_jaudet_privkeys }}'
