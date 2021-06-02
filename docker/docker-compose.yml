@@ -110,7 +110,7 @@ services:
     env_file:
       - &public_funkwhale_env_file ./docker-compose/public/funkwhale.env
       - &private_funkwhale_env_file ./docker-compose/private/funkwhale.env
-    image: &funkwhale-image funkwhale/funkwhale:1.1.1
+    image: &funkwhale-image funkwhale/funkwhale:1.1.2
     networks:
       - funkwhale
     ports:
