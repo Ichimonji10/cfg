@@ -20,8 +20,8 @@ directory.
 This policy will prove problematic if a service named ``docker-compose`` is to be created, and no
 solution for this possibility is provided at this time.
 
-Funkwhale
----------
+Deploy Funkwhale
+----------------
 
 To summarize the `Funkwhale multi-container installation`_ procedure:
 
@@ -54,6 +54,31 @@ relevant library. The most relevant management commands are as follows:
     # This command doesn't check to see if the corresponding file(s) have moved. The
     # `check_inplace_files` command does this.
     docker-compose run --rm funkwhale-api python manage.py prune_library --tracks --albums --artists
+
+Update Funkwhale
+----------------
+
+The update process is described in the `Funkwhale multi-container installation`_ documentation.
+Typical steps are:
+
+#.  Check for differences between the sample nginx configuration file and the one in this
+    repository.
+#.  Bump the version number in the Compose file.
+#.  Pull and build new images.
+#.  Migrate the database.
+#.  Start the new images.
+
+The following commands encapsulate the procedure:
+
+.. code:: sh
+
+    curl -O 'https://dev.funkwhale.audio/funkwhale/funkwhale/-/blob/1.1.2/deploy/docker.nginx.template'
+    vimdiff docker.nginx.template docker/nginx/copy/etc-nginx-conf.d/funkwhale.jerebear.name.conf
+    vim docker/docker-compose.yml
+    docker-compose pull
+    docker-compose build
+    docker-compose run --rm funkwhale-api python manage.py migrate
+    docker-compose up --detach
 
 Transmission
 ------------
