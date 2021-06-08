@@ -1,15 +1,16 @@
 ---
 - block:
 
-  - name: Install openssh
-    pacman:
-      name: openssh
+  - name: Install openssh-server
+    package:
+      name: openssh-server
+      state: present
 
   - name: Install sshd configuration file
     copy:
-      src: sshd_config
-      dest: /etc/ssh/sshd_config
-      mode: 0644
+      src: 50-jaudet.conf
+      dest: /etc/ssh/sshd_config.d/
+      mode: 0600
     notify: Reload sshd
 
   - name: Start and enable sshd

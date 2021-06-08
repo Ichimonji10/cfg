@@ -12,9 +12,9 @@
   roles:
     - apcupsd
 
-# - hosts: servers
-#   roles:
-#     - sshd
+- hosts: servers
+  roles:
+    - sshd
 
 - hosts: workstations
   roles:
