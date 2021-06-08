@@ -7,4 +7,8 @@ Host pine.jerebear.name
     IdentityFile ~/.ssh/keys/pine.jerebear.name
     User ichimonji10
 
+Host usw-s001.rsync.net
+    User ichimonji10
+    IdentityFile ~/.ssh/keys/borg-backup
+
 # vim:ft=sshconfig:

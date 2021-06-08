@@ -1,14 +1,13 @@
 ---
 borg_backup_users_passphrases: '{{ vault_borg_backup_users_passphrases }}'
-borg_backup_users_private_keys: '{{ vault_borg_backup_users_private_keys }}'
 borg_backup_users:
-  - local_paths:
+  - local_user: jaudet
+    local_paths:
       - '~/Books'
       - '~/Documents'
       - '~/Pictures'
-    local_user: jaudet
-    remote_host: usw-s001.rsync.net
     remote_user: 1025
+    remote_host: usw-s001.rsync.net
 
 docker_users:
   - jaudet

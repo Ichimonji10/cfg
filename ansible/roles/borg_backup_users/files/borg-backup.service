@@ -3,4 +3,4 @@ Description=Back up files with Borg
 
 [Service]
 Type=oneshot
-ExecStart={{ borg_backup_user_home }}/.local/bin/borg-backup.sh
+ExecStart=%h/.local/bin/borg-backup.sh
