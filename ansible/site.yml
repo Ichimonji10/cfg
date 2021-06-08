@@ -1,9 +1,10 @@
 ---
 - hosts: all
   roles:
+    # - nft
+    # - smartd
     - docker
     - lm_sensors
-    - smartd
     - syncthing
     - user_jaudet
 
@@ -11,9 +12,9 @@
   roles:
     - apcupsd
 
-- hosts: servers
-  roles:
-    - sshd
+# - hosts: servers
+#   roles:
+#     - sshd
 
 - hosts: workstations
   roles:
