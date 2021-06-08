@@ -16,4 +16,7 @@ ssh_users:
   jaudet:
     privkeys: '{{ vault_ssh_users_jaudet_privkeys }}'
 
+syncthing_usernames:
+  - jaudet
+
 # vim:ft=yaml:
