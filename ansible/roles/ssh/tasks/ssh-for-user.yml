@@ -1,9 +1,6 @@
 ---
 - block:
 
-  - debug:
-      var: ssh_user
-
   - name: Get passwd information about user
     getent:
       database: passwd
