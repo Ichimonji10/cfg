@@ -3,6 +3,10 @@ cfg
 
 Configuration management code for my personal hosts.
 
+Sensitive data in the ``ansible`` and ``docker`` directories is encrypted with ansible-vault and
+git-crypt, respectively. The latter confuses tools like shellcheck until ``git-crypt unlock ...`` is
+executed.
+
 Docker Layout
 -------------
 
