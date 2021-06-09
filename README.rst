@@ -23,6 +23,9 @@ For first-time use on a freshly installed Fedora host, do the following:
     ``user_jaudet`` role during first execution, as several tasks will fail until syncthing has
     synced data.
 
+For a work host, install VPN profiles and the Red Hat CA certificate. See "Red Hat" in personal
+documents.
+
 Docker
 ------
 
