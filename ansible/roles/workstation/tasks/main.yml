@@ -49,6 +49,7 @@
       - com.discordapp.Discord
       - com.slack.Slack
       - com.valvesoftware.Steam
+      - com.visualstudio.code
       - org.gimp.GIMP
       - org.musicbrainz.Picard
       - org.signal.Signal
