@@ -27,6 +27,7 @@
         - tmate
         - vim
         - virt-manager
+        - wl-clipboard
 
   - name: Add flathub as a remote
     community.general.flatpak_remote:
