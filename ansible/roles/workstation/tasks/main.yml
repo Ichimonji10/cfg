@@ -29,6 +29,11 @@
         - virt-manager
         - wl-clipboard
 
+        # For compiling packages from source, needed by iqe-* packages.
+        - krb5-devel
+        - libpq-devel
+        - python3-devel
+
   - name: Add flathub as a remote
     community.general.flatpak_remote:
       name: flathub
