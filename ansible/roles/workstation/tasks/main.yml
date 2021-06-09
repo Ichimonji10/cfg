@@ -23,8 +23,8 @@
         - python3-mypy
         - python3-passlib  # for ansible's htpasswd module
         - python3-pygments  # for rst2html syntax highlighting
+        - python3-sphinx
         - python3-tmuxp
-        - sphinx
         - tmate
         - vim
         - virt-manager
