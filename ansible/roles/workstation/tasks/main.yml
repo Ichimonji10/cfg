@@ -22,6 +22,7 @@
         - python3-docutils  # for rst2html
         - python3-mypy
         - python3-passlib  # for ansible's htpasswd module
+        - python3-pygments  # for rst2html syntax highlighting
         - python3-tmuxp
         - sphinx
         - tmate
