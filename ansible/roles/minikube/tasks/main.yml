@@ -1,0 +1,31 @@
+---
+- name: Check if minikube is installed
+  command: rpm -q minikube
+  changed_when: false
+  check_mode: false
+  failed_when: false
+  register: result
+
+- block:
+
+    # https://minikube.sigs.k8s.io/docs/start/
+    - name: Install minikube
+      dnf:
+        name: https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+        state: present
+        disable_gpg_check: true
+      when: result.rc > 0
+
+    - name: Install libvirt
+      dnf:
+        name: libvirt
+        state: present
+
+    - name: Add users to "libvirt" group
+      user:
+        name: '{{ item }}'
+        group: libvirt
+        append: true
+      loop: '{{ minikube_users }}'
+
+  become: true

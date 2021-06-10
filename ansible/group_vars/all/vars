@@ -12,6 +12,9 @@ borg_backup_users:
 docker_users:
   - jaudet
 
+minikube_users:
+  - jaudet
+
 ssh_users:
   jaudet:
     privkeys: '{{ vault_ssh_users_jaudet_privkeys }}'

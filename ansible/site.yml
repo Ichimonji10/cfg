@@ -19,5 +19,6 @@
 - hosts: workstations
   roles:
     - borg_backup_users
+    - minikube
     - ssh
     - workstation
