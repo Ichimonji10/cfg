@@ -1,0 +1,9 @@
+---
+- name: Assert required variables have been set
+  assert:
+    that: ssh_users is defined
+
+- include_tasks: ssh-for-user.yml
+  loop: '{{ ssh_users | dict2items }}'
+  loop_control:
+    loop_var: ssh_user

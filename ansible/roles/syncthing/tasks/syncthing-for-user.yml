@@ -1,25 +1,25 @@
 ---
-- name: "Get {{ item }}'s lingering state"
-  command: loginctl --property Linger --value show-user {{ item }}
+- name: "Get {{ syncthing_username }}'s lingering state"
+  command: loginctl --property Linger --value show-user {{ syncthing_username }}
   changed_when: false
   check_mode: false
   failed_when: false
   register: result
 
-# Spawn a user manager for this user at system start-up time. This allows
-# enabled user units to start without that user being logged in.
-- name: Enable lingering for {{ item }}
-  command: loginctl enable-linger {{ item }}
+# Spawn a user manager for this user at system start-up time. This allows enabled user units to
+# start without that user being logged in.
+- name: Enable lingering for {{ syncthing_username }}
+  command: loginctl enable-linger {{ syncthing_username }}
   become: true
-  become_user: '{{ item }}'
+  become_user: '{{ syncthing_username }}'
   when:
     - '"servers" in group_names'
     - result.stdout != 'yes'
 
-- name: Get passwd information about {{ item }}
+- name: Get passwd information about {{ syncthing_username }}
   getent:
     database: passwd
-    key: '{{ item }}'
+    key: '{{ syncthing_username }}'
     split: ':'
 
 # XDG_RUNTIME_DIR must be set, or else the systemd module will be unable to
@@ -30,7 +30,7 @@
 # https://uggedal.com/journal/ansible-systemd-user/
 # https://unix.stackexchange.com/questions/346841/why-does-sudo-i-not-set-xdg-runtime-dir-for-the-target-user
 # https://www.freedesktop.org/software/systemd/man/pam_systemd.html
-- name: Start and enable syncthing for {{ item }}
+- name: Start and enable syncthing for {{ syncthing_username }}
   systemd:
     name: syncthing.service
     state: started
@@ -38,6 +38,6 @@
     scope: user
     daemon_reload: true
   environment:
-    XDG_RUNTIME_DIR: /run/user/{{ getent_passwd[item][1] }}
+    XDG_RUNTIME_DIR: /run/user/{{ getent_passwd[syncthing_username][1] }}
   become: true
-  become_user: "{{ item }}"
+  become_user: "{{ syncthing_username }}"

@@ -1,0 +1,19 @@
+all:
+  children:
+
+    # Each of these systems has an APC brand UPS attached.
+    apc_hosts:
+      hosts:
+        beech.jerebear.name:
+        pine.jerebear.name:
+
+    # These systems are headless, have high uptime, and have remote management capabilities.
+    servers:
+      hosts:
+        pine.jerebear.name:
+
+    # These systems have GUIs, limited uptime, and no remote management capabilities.
+    workstations:
+      hosts:
+        beech.jerebear.name:
+        tupelo.jerebear.name:

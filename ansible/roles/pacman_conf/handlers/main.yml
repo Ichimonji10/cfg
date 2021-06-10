@@ -1,5 +1,0 @@
----
-- name: Sync all repositories
-  pacman:
-    update_cache: true
-  become: true

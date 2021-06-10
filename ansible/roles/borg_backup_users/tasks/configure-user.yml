@@ -7,7 +7,7 @@
 
 - name: Set a variable referencing the user's ID
   set_fact:
-    borg_backup_user_id: '{{ getent_passwd[borg_backup_user.local_user][1] }}'
+    borg_backup_user_uid: '{{ getent_passwd[borg_backup_user.local_user][1] }}'
 
 - name: Set a variable referencing the user's home directory
   set_fact:
@@ -15,43 +15,23 @@
 
 - block:
 
-    - name: Create directories in the user's home directory
-      file:
-        path: '{{ borg_backup_user_home }}/{{ item }}'
-        state: directory
+    - name: Install ~/.local/bin/borg-backup.sh
+      template:
+        src: borg-backup.sh
+        dest: '{{ borg_backup_user_home }}/.local/bin'
         mode: 0700
+
+    - name: Install unit files
+      copy:
+        src: '{{ item }}'
+        dest: '{{ borg_backup_user_home }}/.config/systemd/user/'
+        mode: 0600
       loop:
-        - .local/bin
-        - .ssh/includes
-        - .ssh/keys
+        - borg-backup.service
+        - borg-backup.timer
 
-    - name: Install SSH private key
-      copy:
-        content: '{{ borg_backup_users_private_keys[borg_backup_user.local_user] }}'
-        dest: '{{ borg_backup_user_home }}/.ssh/keys/borg-backup'
-        mode: 0600
-      when: borg_backup_user.local_user in borg_backup_users_private_keys
-
-    - name: Install SSH config file
-      template:
-        src: 50-borg
-        dest: '{{ borg_backup_user_home }}/.ssh/includes/'
-        mode: 0600
-
-    - name: Install borg-backup.service
-      template:
-        src: borg-backup.service
-        dest: '{{ borg_backup_user_home }}/.config/systemd/user/'
-        mode: 0600
-
-    - name: Install borg-backup.timer
-      copy:
-        src: borg-backup.timer
-        dest: '{{ borg_backup_user_home }}/.config/systemd/user/'
-        mode: 0600
-
-    # XDG_RUNTIME_DIR must be set, or else the systemd module will be unable to
-    # contact the user's DBus instance. In no particular order, see:
+    # XDG_RUNTIME_DIR must be set, or else the systemd module will be unable to contact the user's
+    # DBus instance. In no particular order, see:
     #
     # https://github.com/ansible/ansible/issues/27631
     # https://stackoverflow.com/questions/34167257/
@@ -67,12 +47,7 @@
         scope: user
         daemon_reload: true
       environment:
-        XDG_RUNTIME_DIR: /run/user/{{ borg_backup_user_id }}
-
-    - name: Delete outdated files
-      file:
-        path: '{{ borg_backup_user_home }}/.ssh/borg-backup'
-        state: absent
+        XDG_RUNTIME_DIR: /run/user/{{ borg_backup_user_uid }}
 
   become: true
   become_user: '{{ borg_backup_user.local_user }}'

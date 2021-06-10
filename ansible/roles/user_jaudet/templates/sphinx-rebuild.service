@@ -1,0 +1,20 @@
+[Unit]
+Description=Watch and automatically rebuild a Sphinx doctree
+AssertPathExists={{ user_jaudet_home }}/Documents/build
+AssertPathExists={{ user_jaudet_home }}/Documents/source
+
+[Service]
+Type=simple
+WorkingDirectory={{ user_jaudet_home }}/Documents
+ExecStart=/usr/bin/bash -c 'find source -type f | entr -nd make html'
+NoNewPrivileges=true
+
+# From entr(1), an exit code of 2 means: A file was added to a directory and the
+# directory watch option was specified
+SuccessExitStatus=2
+RestartForceExitStatus=2
+
+[Install]
+WantedBy=default.target
+
+# vim:set ft=systemd:

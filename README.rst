@@ -3,8 +3,34 @@ cfg
 
 Configuration management code for my personal hosts.
 
-Docker Layout
--------------
+Sensitive data in the ``ansible`` and ``docker`` directories is encrypted with ansible-vault and
+git-crypt, respectively. The latter confuses tools like shellcheck until ``git-crypt unlock ...`` is
+executed.
+
+.. contents:: Contents
+    :local:
+
+Ansible
+-------
+
+For first-time use on a freshly installed Fedora host, do the following:
+
+#.  Install all pending updates.
+#.  Install ``ansible``.
+#.  Execute ``ansible-galaxy collection install community.general`` (for Flathub configuration).
+#.  Set ``ansible_connection: local`` in ``host_vars/${hostname}.yml``.
+#.  Execute ``ansible-playbook site.yml --ask-vault-pass --limit ${hostname}``. Skip the
+    ``user_jaudet`` role during first execution, as several tasks will fail until syncthing has
+    synced data.
+
+For a work host, install VPN profiles and the Red Hat CA certificate. See "Red Hat" in personal
+documents.
+
+Docker
+------
+
+Directory Layout
+````````````````
 
 If a file is copied into a service while its backing image is being built, or if a file is mounted
 into a service while it's running, then it should go into a subdirectory named after that service.
@@ -20,8 +46,8 @@ directory.
 This policy will prove problematic if a service named ``docker-compose`` is to be created, and no
 solution for this possibility is provided at this time.
 
-Deploy Funkwhale
-----------------
+Funkwhale Deployment Procedure
+``````````````````````````````
 
 To summarize the `Funkwhale multi-container installation`_ procedure:
 
@@ -55,8 +81,8 @@ relevant library. The most relevant management commands are as follows:
     # `check_inplace_files` command does this.
     docker-compose run --rm funkwhale-api python manage.py prune_library --tracks --albums --artists
 
-Update Funkwhale
-----------------
+Funkwhale Update Procedure
+``````````````````````````
 
 The update process is described in the `Funkwhale multi-container installation`_ documentation.
 Typical steps are:
@@ -80,8 +106,8 @@ The following commands encapsulate the procedure:
     docker-compose run --rm funkwhale-api python manage.py migrate
     docker-compose up --detach
 
-Transmission
-------------
+Transmission Port Configuration Procedure
+`````````````````````````````````````````
 
 For some reason, Transmission doesn't write ``peer-port`` to ``settings.json`` upon shutdown. To set
 this value:

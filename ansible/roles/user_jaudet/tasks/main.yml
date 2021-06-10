@@ -1,0 +1,19 @@
+---
+- name: Get passwd info about jaudet
+  getent:
+    database: passwd
+    key: jaudet
+    split: ':'
+
+- name: Set variable referencing jaudet's home directory
+  set_fact:
+    user_jaudet_home: "{{ getent_passwd['jaudet'][4] }}"
+
+# Run the "bash" role first so that ~/.local/bin/ can be created.
+- include_tasks: bash.yml
+- include_tasks: git.yml
+- include_tasks: other.yml
+- include_tasks: python.yml
+- include_tasks: systemd.yml
+- include_tasks: tmuxp.yml
+- include_tasks: vim.yml

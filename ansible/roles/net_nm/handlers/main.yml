@@ -1,4 +1,0 @@
----
-- name: Reload NetworkManager
-  command: nmcli general reload
-  become: true

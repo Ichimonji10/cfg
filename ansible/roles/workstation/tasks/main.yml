@@ -1,144 +1,58 @@
 ---
 - block:
 
-  - name: Install video drivers
-    pacman:
-      name: '{{ workstation_video_drivers }}'
-
-  # NOTE: We assume base and base-devel are already present, and were enabled at
-  # install time. Requiring it at a later time can be problematic if the
-  # multilib repository is enabled.
-  - name: Install applications
-    pacman:
+  - name: Install system applications
+    dnf:
       name:
+        - ShellCheck
         - ansible
-        - calibre
         - cmark
         - ctags
-        - cups
-        - devtools
-        - discord
         - docker-compose
         - entr
-        - exfat-utils
-        - firefox
-        - git
+        - fuse-sshfs
         - git-crypt
-        - gptfdisk
-        - graphviz
-        - hexchat
-        - iperf3
-        - ipv6calc
-        - jq
-        - kubectl
-        - lshw
-        - lsof
-        - man-pages
-        - maven
-        - mypy
-        - namcap
-        - noto-fonts
-        - noto-fonts-cjk
-        - noto-fonts-emoji
-        - ntfs-3g
-        - openssh
-        - pacman-contrib
-        - picard
-        - picocom
-        - postgresql-libs  # for iqe-tests
-        - pulseaudio
-        - python-dnspython  # for ansible's dig lookup plugin
-        - python-docutils  # for rst2html
-        - python-passlib  # for ansible's htpasswd module
-        - python-pre-commit
-        - python-pylint
-        - python-sphinx
-        - python-wheel
-        - shellcheck
-        - signal-desktop
-        - sshfs
-        - sshpass  # optional for ansible
-        - steam
-        - tigervnc
-        - tmate
-        - tmux
-        - tmuxp
-        - ttf-dejavu
-        - twine
-        - unzip
-        - vim
-        - vim-nerdtree
-        - vim-tagbar
-        - virt-manager
-        - vlc
-        - wget
-        - wireshark-qt
-        - xclip
-        - zip
-
-        # The goal is to *not* pull in the entire GNOME desktop. Rather than
-        # installing gnome-extra, install gnome and whatever extra apps are
-        # desired. See: https://wiki.archlinux.org/index.php/GNOME#Installation
-        - gdm
-        - gimp
-        - gnome
         - gnome-tweaks
+        - graphviz
+        - iperf3
+        - lshw
+        - maven
+        - pre-commit
+        - pylint
+        - python3-docutils  # for rst2html
+        - python3-mypy
+        - python3-passlib  # for ansible's htpasswd module
+        - python3-pygments  # for rst2html syntax highlighting
+        - python3-sphinx
+        - python3-tmuxp
+        - tmate
+        - vim
+        - virt-manager
+        - wl-clipboard
 
-        # https://wiki.archlinux.org/index.php/GStreamer
-        - gst-libav
-        - gst-plugins-base
-        - gst-plugins-good
-        - gstreamer
-        - gstreamer-vaapi
-    notify: Set install reason for optional dependencies
+        # For compiling packages from source, needed by iqe-* packages.
+        - krb5-devel
+        - libpq-devel
+        - python3-devel
 
-  - name: Uninstall applications
-    pacman:
-      name:
-        - ansible-lint
-        - bandwidth
-        - bluejeans
-        - brother-hll2395dw
-        - brscan4
-        - gobject-introspection
-        - heaptrack
-        - jdk8-openjdk
-        - ms-sys
-        - npm
-        - python-poetry
-        - python-rst2pdf
-        - python36
-        - rust
-        - rust-docs
-        - sbt
-        - scala
-        - signal-desktop-bin
-        - spin
-        - yamllint
-      state: absent
+  - name: Add flathub as a remote
+    community.general.flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
 
-  become: true
+  - name: Install flatpak applications
+    flatpak:
+      name: '{{ item }}'
+      state: present
+    loop:
+      - com.calibre_ebook.calibre
+      - com.discordapp.Discord
+      - com.slack.Slack
+      - com.valvesoftware.Steam
+      - com.visualstudio.code
+      - org.gimp.GIMP
+      - org.musicbrainz.Picard
+      - org.signal.Signal
 
-# Immediately starting gdm at install time could cause complications.
-- name: Enable (but don't start) gdm
-  systemd:
-    name: gdm
-    enabled: true
-    daemon_reload: true
-  become: true
-
-- name: Enable and start CUPS
-  systemd:
-    name: cups.service
-    state: started
-    enabled: true
-    daemon_reload: true
-  become: true
-
-- name: Enable and start bluetooth
-  systemd:
-    name: bluetooth.service
-    state: started
-    enabled: true
-    daemon_reload: true
   become: true

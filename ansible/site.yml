@@ -1,56 +1,23 @@
 ---
-# workstations & servers ###########################################################################
-
-- hosts: workstations
-  roles:
-    - borg_backup_users
-    - net_nm
-    - workstation
-
-- hosts: servers
-  roles:
-    - net_sd  # could use net_nm, for sake of homogeneity?
-    - sshd
-
-# other ############################################################################################
-
 - hosts: all
   roles:
-    - crda
-    - essential_apps
+    # - nft
+    # - smartd
+    - docker
     - lm_sensors
-    - locale
-    - nft
-    - pacman_conf
-    - smartd
-    - time
-    - ucode
-    - user_ichimonji10
+    - syncthing
+    - user_jaudet
 
 - hosts: apc_hosts
   roles:
     - apcupsd
 
-- hosts: btrfs_hosts
+- hosts: servers
   roles:
-    - btrfs_balance
-    - btrfs_scrub
-    - btrfs_subvolume
+    - sshd
 
-- hosts: coreboot_hosts
+- hosts: workstations
   roles:
-    - coreboot
-
-- hosts: syncthing_hosts
-  roles:
-    - syncthing
-
-# Requisite package is unavailable
-# - hosts: uefi_hosts
-#   roles:
-#     - uefi
-
-- hosts: vm_hosts
-  roles:
-    - dockerd
-    - libvirtd
+    - borg_backup_users
+    - ssh
+    - workstation

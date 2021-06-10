@@ -1,8 +1,0 @@
----
-- name: Uninstall formerly necessary packages
-  pacman:
-    name:
-      - dnsmasq
-      - openresolv
-    state: absent
-  become: true

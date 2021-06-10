@@ -1,0 +1,37 @@
+---
+- block:
+
+    - name: Install dnf-plugins-core (for managing RPM repositories)
+      dnf:
+        name: dnf-plugins-core
+        state: present
+
+    - name: Add Docker repository
+      command:
+        cmd: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+      args:
+        creates: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Install docker
+      dnf:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+
+    - name: Start and enable dockerd
+      systemd:
+        name: docker.service
+        state: started
+        enabled: true
+
+    - name: Add users to the docker group
+      user:
+        append: true
+        groups:
+          - docker
+        name: '{{ item }}'
+      loop: '{{ docker_users }}'
+
+  become: true

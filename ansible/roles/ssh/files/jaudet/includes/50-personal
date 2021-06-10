@@ -1,0 +1,14 @@
+Host github.com
+    IdentityFile ~/.ssh/keys/github.com
+    User ichimonji10
+
+Host pine.jerebear.name
+    Hostname 192.168.1.86
+    IdentityFile ~/.ssh/keys/pine.jerebear.name
+    User ichimonji10
+
+Host usw-s001.rsync.net
+    User ichimonji10
+    IdentityFile ~/.ssh/keys/borg-backup
+
+# vim:ft=sshconfig:
