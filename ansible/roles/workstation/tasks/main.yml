@@ -13,6 +13,7 @@
         - fuse-sshfs
         - git-crypt
         - gnome-tweaks
+        - golang  # for clowder
         - graphviz
         - iperf3
         - lshw
