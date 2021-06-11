@@ -18,7 +18,7 @@
     - name: Install ~/.local/bin/borg-backup.sh
       template:
         src: borg-backup.sh
-        dest: '{{ borg_backup_user_home }}/.local/bin'
+        dest: '{{ borg_backup_user_home }}/.local/bin/'
         mode: 0700
 
     - name: Install unit files
