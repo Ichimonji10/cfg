@@ -54,5 +54,6 @@
       - org.gimp.GIMP
       - org.musicbrainz.Picard
       - org.signal.Signal
+      - org.videolan.VLC
 
   become: true
