@@ -51,6 +51,7 @@
       - com.discordapp.Discord
       - com.slack.Slack
       - com.valvesoftware.Steam
+      - com.valvesoftware.Steam.CompatibilityTool.Proton
       - com.visualstudio.code
       - org.gimp.GIMP
       - org.musicbrainz.Picard
