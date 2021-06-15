@@ -1,5 +1,4 @@
-sshd
-====
+# sshd
 
 Install, configure, start, and enable OpenSSH server.
 

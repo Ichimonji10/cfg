@@ -60,4 +60,9 @@ repos:
           - -d
           - '{rules: {line-length: {max: 100}}}'
 
+  - repo: https://github.com/executablebooks/mdformat.git
+    rev: 0.7.6
+    hooks:
+      - id: mdformat
+
 # vim:set ft=yaml:

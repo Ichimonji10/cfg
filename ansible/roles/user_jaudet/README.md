@@ -1,5 +1,4 @@
-user_jaudet
-===========
+# user_jaudet
 
 Customize user jaudet.
 

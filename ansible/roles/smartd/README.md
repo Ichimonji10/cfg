@@ -1,5 +1,4 @@
-smartd
-======
+# smartd
 
 Install smartmontools, and periodically perform SMART scans.
 
