@@ -1,6 +1,24 @@
+" vim-plug
+" ========
+" https://github.com/junegunn/vim-plug
+" Plugins are installed form GitHub by default.
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'inkarkat/vim-mark'
+Plug 'mbbill/undotree'
+Plug 'nanotech/jellybeans.vim'
+Plug 'preservim/nerdtree'
+Plug 'preservim/tagbar'
+Plug 'sjl/badwolf'
+
+call plug#end()
+
 " Key Bindings
 " ============
 " What key should 'leader' be mapped to?
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<c-p>'
 let mapleader=","
 " Shortcuts.
 nmap <F5> :tabprev<CR>
@@ -102,6 +120,7 @@ set backspace=2
 set scrolloff=5
 " Use syntax highlighting.
 syntax enable
+color badwolf
 " Display interesting characters, such as trailing whitespace, specially.
 set list
 set listchars=trail:·,tab:┼─,extends:→
