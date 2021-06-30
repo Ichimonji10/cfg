@@ -12,6 +12,7 @@ windows:
       - focus: true
         shell_command:
           - export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+          - export ENV_FOR_DYNACONF=stage_proxy
           - . ~/.venvs/iqe-remediations-plugin/bin/activate
           - git status
       - watch --color git hist --color
@@ -23,6 +24,7 @@ windows:
       - focus: true
         shell_command:
           - export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+          - export ENV_FOR_DYNACONF=stage_proxy
           - . ~/.venvs/iqe-rhc-plugin/bin/activate
           - git status
       - watch --color git hist --color
@@ -34,6 +36,7 @@ windows:
       - focus: true
         shell_command:
           - export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+          - export ENV_FOR_DYNACONF=stage_proxy
           - . ~/.venvs/iqe-e2e-plugin/bin/activate
           - git status
       - watch --color git hist --color
